@@ -12,11 +12,12 @@ public class Livros {
     
     public String genero, autor, status, titulo;
 
-    public Livros(String genero, String autor, String status, String titulo) {
+    public Livros( String titulo, String genero, String autor, String status) {
+       
+        this.titulo = titulo;
         this.genero = genero;
         this.autor = autor;
         this.status = status;
-        this.titulo = titulo;
     }
 
     public String getGenero() {

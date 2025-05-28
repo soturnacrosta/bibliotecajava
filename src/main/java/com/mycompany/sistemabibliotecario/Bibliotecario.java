@@ -8,46 +8,45 @@ package com.mycompany.sistemabibliotecario;
  *
  * @author mailton
  */
-public class Bibliotecario implements InterfaceBibliotecario {
+public class Bibliotecario extends Usuarios {
     
-    public String nome;
-    protected String matricula;
     private SistemaBiblioteca sistemaBiblioteca;
 
-    public Bibliotecario(String nome, String matricula, SistemaBiblioteca sistemaBiblioteca) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.sistemaBiblioteca = sistemaBiblioteca;
-    }
-
-    @Override
-    public void CadastrarLivro() {
+    public Bibliotecario(String nome, String cpf, String matricula, SistemaBiblioteca sistemaBiblioteca ) {
         
+        super(nome, cpf, matricula);
+        
+        this.sistemaBiblioteca = sistemaBiblioteca; //isso que associa que o bibliotecario vai gerenciar
+   
     }
+    
+    //Quando você cria um objeto Bibliotecario, você passa a ele qual SistemaBiblioteca ele vai gerenciar.
+   
+    public void cadastrarLivro(Livros livro) {
+        
+        System.out.println(this.getNome() + " está cadastrando um livro.");
+        
+        this.sistemaBiblioteca.CadastrarLivro(livro); 
 
-    @Override
-    public void ModificarLivro() {
-
+        System.out.println("Livro " + livro + " cadastrado.");
+     
     }
+    
+     public void modificarDadosLivro(String titulo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
+        
+         System.out.println(this.getNome() + " está modificando um livro.");
 
-    @Override
-    public void RemoverLivro() {
-
-    }
-
-    @Override
-    public void RegisrarEmprestimo() {
-
-    }
-
-    @Override
-    public void EncerrarEmprestimo() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Bibliotecario{" + "nome=" + nome + ", matricula=" + matricula + ", sistemaBiblioteca=" + sistemaBiblioteca + '}';
+         if (this.sistemaBiblioteca.AtualizarLivro(titulo, novoTitulo, novoAutor, novoGenero, novoStatus)) {
+            
+            System.out.println("Modificação de livro concluída por " + this.getNome());
+            
+        } 
+        
+        else {
+            
+            
+            System.out.println("Falha na modificação do livro por " + this.getNome());
+        }
     }
     
 }

@@ -12,50 +12,26 @@ public class SistemaBibliotecario {
 
     public static void main(String[] args) {
 
-        Livros livro1 = new Livros ("terror", "bram", "disponivel", "dracula");
-        Livros livro2 = new Livros ("terror", "cu", "disponivel", "dracula");
-
-       // Livros livro3 = new Livros ("teste", "arroz", "a", "123");
+        Livros livro1 = new Livros ("dracula", "terror", "bram", "disponivel");
+        Livros livro2 = new Livros ("teste", "terror", "cu", "disponivel");
         
-        //Usuarios usuario1 = new Usuarios ("lucas", "001", "123");
+        Usuarios usuario1 = new Usuarios ("MAilton", "123", "001");
+        Usuarios usuario2 = new Usuarios ("matheus", "000", "999");
+        
         
         SistemaBiblioteca biblioteca1 = new SistemaBiblioteca ();
-        
-        Bibliotecario bibliotecario1 = new Bibliotecario ("alan", "001", biblioteca1);
-        
-        biblioteca1.CadastrarLivro(livro1);
-        biblioteca1.CadastrarLivro(livro2);
-
-
-        Usuarios usuario = new Usuarios ("marlon", "123", "1244");
-        Usuarios usuario2 = new Usuarios ("marlon", "124", "104");
-
-        biblioteca1.CadastrarUsuario(usuario);
-        biblioteca1.CadastrarUsuario(usuario2);
+                biblioteca1.CadastrarUsuario(usuario2);
 
         
-        biblioteca1.BuscarLivroPorTitulo("dracula");
+        Bibliotecario bibliotecario1 = new Bibliotecario ("Mailton", "123", "001", biblioteca1);
         
-        //biblioteca1.AtualizarUsuario("1244", "marcos", "100", "002");
-        
-        
-        //biblioteca1.BuscarLivroPorAutor("arroz");
-        
-        
-        //biblioteca1.buscarUsuarioPorMatricula("002");
-        
-        //biblioteca1.RemoverUsuario(usuario);
-        
-        biblioteca1.buscarUsuarioPorNome("marlon");
+        biblioteca1.CadastrarUsuario(usuario1);
 
+        biblioteca1.AtualizarUsuario("001", "marcos", "1234", "1111");
         
-        //System.out.println(usuario);
+        biblioteca1.AtualizarUsuario("999", "novoNome", "novoCpf", "sa");
+        
        
-        //biblioteca1.BuscarLivroPorAutor("bram");
-
-       // biblioteca1.AtualizarLivro("dracula", "frankenstein", "maria", "suspense", "devolvido");
-                   
-       //System.out.println(biblioteca1);
         
     }
 }

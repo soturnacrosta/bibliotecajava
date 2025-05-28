@@ -45,7 +45,7 @@ public class SistemaBiblioteca {
         
             for (Livros l : acervo) {
 
-                if (l.getTitulo().equals(titulo)) {
+                if (l.getTitulo().equalsIgnoreCase(titulo)) {
 
                     System.out.println("Titulo encontrado: " + l);
 
@@ -126,35 +126,32 @@ public class SistemaBiblioteca {
 
     public Usuarios buscarUsuarioPorMatricula(String matricula) {
         
-        List<Usuarios> resultados = new ArrayList<>();
-        
         for (Usuarios u : usuariosCadastrados) {
             
             if (u.getMatricula().equalsIgnoreCase(matricula)) {
                 
-                System.out.println("Encontrado: " + u);
-                
-                resultados.add(u);
+                System.out.println("DEBUG (buscarUsuarioPorMatricula): Usuário encontrado: " + u.getNome() + " (Matrícula: " + u.getMatricula() + ")");
+                return u; // <--- Retorna o usuário IMEDIATAMENTE quando encontra
             }
             
         }
         
-            System.out.println("Usuário não encontrado.");
-
-        return null; // Usuário não encontrado
+        System.out.println("DEBUG (buscarUsuarioPorMatricula): Usuário com matrícula '" + matricula + "' não encontrado.");
+        
+        return null; // Retorna null se nenhum usuário for encontrado
+        
     }
-    
+
+           
         public Usuarios buscarUsuarioPorCpf(String cpf) {
         
-        List<Usuarios> resultados = new ArrayList<>();
-
         for (Usuarios u : usuariosCadastrados) {
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
                 System.out.println("Encontrado: " + u);
                 
-            resultados.add(u);
+                return u;
                 
             }
             
@@ -191,6 +188,8 @@ public class SistemaBiblioteca {
         Livros livroAtualizar = BuscarLivroPorTitulo(titulo); //usar o método de busca lá encima pra procurará
         
         if (livroAtualizar != null) {
+
+                System.out.println("DEBUG (AtualizarLivro): Livro encontrado! Atualizando dados...");
 
                 livroAtualizar.setTitulo(novoTitulo);
                 livroAtualizar.setAutor(novoAutor);
