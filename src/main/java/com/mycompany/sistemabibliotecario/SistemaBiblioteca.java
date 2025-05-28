@@ -26,7 +26,7 @@ public class SistemaBiblioteca {
         
         this.acervo.add(livro);
         
-        System.out.println("Livro '" + livro.getTitulo() + "' adicionado ao acervo.");
+        System.out.println("Livro '" + livro.getTitulo() + "' adicionado ao acervo.\n");
         
     }
     
@@ -34,7 +34,7 @@ public class SistemaBiblioteca {
         
         this.acervo.remove(livro);
         
-        System.out.println("Livro '" + livro.getTitulo() + "' removido do acervo.");
+        System.out.println("Livro '" + livro.getTitulo() + "' removido do acervo.\n");
         
     }
     
@@ -88,7 +88,7 @@ public class SistemaBiblioteca {
                 }
             }
           
-        System.out.println("Título não encontrado.");
+        System.out.println("Título não encontrado.\n");
         
         return null; // Livro não encontrado
           
@@ -108,7 +108,7 @@ public class SistemaBiblioteca {
                 }
         }
           
-        System.out.println("Título não encontrado.");
+        System.out.println("Título não encontrado.\n");
 
         return null; // Livro não encontrado
     }
@@ -127,7 +127,7 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.add(usuario);
         
-        System.out.println("Usuário '" + usuario.getNome() + "' cadastrado.");
+        System.out.println("Usuário '" + usuario.getNome() + "' cadastrado.\n");
         
     }
     
@@ -135,17 +135,17 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.remove(usuario);
         
-        System.out.println("Usuário '" + usuario.getNome() + "' excluído.");
+        System.out.println("Usuário '" + usuario.getNome() + "' excluído.\n");
 
     }
 
-    public Usuarios buscarUsuarioPorMatricula(String matricula) {
+    public Usuarios BuscarUsuarioPorMatricula(String matricula) {
         
         for (Usuarios u : usuariosCadastrados) {
             
             if (u.getMatricula().equalsIgnoreCase(matricula)) {
                 
-                System.out.println("DEBUG (buscarUsuarioPorMatricula): Usuário encontrado: " + u.getNome() + " (Matrícula: " + u.getMatricula() + ")");
+                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
                 return u; // <--- Retorna o usuário IMEDIATAMENTE quando encontra
             }
             
@@ -158,13 +158,13 @@ public class SistemaBiblioteca {
     }
 
            
-        public Usuarios buscarUsuarioPorCpf(String cpf) {
+        public Usuarios BuscarUsuarioPorCpf(String cpf) {
         
         for (Usuarios u : usuariosCadastrados) { //como cpf e matricula são unicos, não precisa retornar multiplos retornados, nada de lista
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
-                System.out.println("Encontrado: " + u);
+                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
                 
                 return u;
                 
@@ -172,12 +172,12 @@ public class SistemaBiblioteca {
             
         }
         
-            System.out.println("Usuário não encontrado.");
+            System.out.println("Usuário não encontrado.\n");
 
         return null; // Usuário não encontrado
     }
         
-    public Usuarios buscarUsuarioPorNome (String nome) {
+    public List<Usuarios> BuscarUsuarioPorNome (String nome) {
 
         List<Usuarios> resultados = new ArrayList<>();
 
@@ -185,7 +185,7 @@ public class SistemaBiblioteca {
 
             if (u.getNome().equalsIgnoreCase(nome)) {
 
-                System.out.println("Encontrado: " + u);
+                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
 
             resultados.add(u);
 
@@ -193,9 +193,7 @@ public class SistemaBiblioteca {
 
         }
 
-        System.out.println("Usuário não encontrado.");
-
-        return null; // Usuário não encontrado
+        return resultados; // Usuário não encontrado
     }
 
     public boolean AtualizarLivro (String codigo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
@@ -219,7 +217,7 @@ public class SistemaBiblioteca {
         
         else {
             
-                System.out.println("Erro, livro não encontrado.");
+                System.out.println("Erro, livro não encontrado.\n");
             
             return false;
             
@@ -230,7 +228,7 @@ public class SistemaBiblioteca {
     
     public  boolean AtualizarUsuario (String matricula, String novoNome, String novoCpf, String novaMatricula){
         
-        Usuarios usuarioAtualizar = buscarUsuarioPorMatricula(matricula);
+        Usuarios usuarioAtualizar = BuscarUsuarioPorMatricula(matricula);
         
         if (usuarioAtualizar != null) {
             

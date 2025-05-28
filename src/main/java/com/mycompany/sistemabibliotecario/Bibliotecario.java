@@ -16,29 +16,34 @@ public class Bibliotecario extends Usuarios {
         
         super(nome, cpf, matricula);
         
-        this.sistemaBiblioteca = sistemaBiblioteca; //isso que associa que o bibliotecario vai gerenciar
+            this.sistemaBiblioteca = sistemaBiblioteca; //isso que associa que o bibliotecario vai gerenciar
    
     }
     
     //Quando você cria um objeto Bibliotecario, você passa a ele qual SistemaBiblioteca ele vai gerenciar.
    
-    public void cadastrarLivro(Livros livro) {
+    public void CadastrarLivro(Livros livro) {
+        
         
         System.out.println(this.getNome() + " está cadastrando um livro.");
         
-        this.sistemaBiblioteca.CadastrarLivro(livro); 
+            this.sistemaBiblioteca.CadastrarLivro(livro); 
 
-        System.out.println("Livro " + livro + " cadastrado.");
-     
+    }
+    
+    public void RemoverLivro (Livros livro) {
+        
+        System.out.println(this.getNome() + " está removendo um livro.");
+        
+            this.sistemaBiblioteca.RemoverLivro(livro);
+        
     }
     
     public void ModificarDadosLivro(String codigo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
         
-         System.out.println(this.getNome() + " está modificando um livro.");
+        System.out.println(this.getNome() + " está modificando um livro.");
 
-         if (this.sistemaBiblioteca.AtualizarLivro(codigo, novoTitulo, novoAutor, novoGenero, novoStatus)) {
-            
-            System.out.println("Modificação de livro concluída por " + this.getNome());
+            if (this.sistemaBiblioteca.AtualizarLivro(codigo, novoTitulo, novoAutor, novoGenero, novoStatus)) { //apenas chama o método
             
         } 
         
@@ -46,8 +51,71 @@ public class Bibliotecario extends Usuarios {
             
             
             System.out.println("Falha na modificação do livro por " + this.getNome());
+            
         }
     }
-     
     
+    public void BuscaLivroPorCodigo (String codigo) {
+        
+        System.out.println("Consultando livro por codigo...");
+        
+            this.sistemaBiblioteca.BuscaLivroPorCodigo(codigo);
+
+    }
+     
+    public void ModificarUsuarios (String matricula, String novoNome, String novoCpf, String novaMatricula) {
+        
+        System.out.println(this.getNome() + " está modificando um usário.");
+        
+            if (this.sistemaBiblioteca.AtualizarUsuario(matricula, novoNome, novoCpf, novaMatricula)) { //ele apenas chama o método
+            
+        }
+        
+        else {
+            
+            System.out.println("Falha na modificação do usuario por " + this.getNome());
+
+        }
+            
+    }
+    
+    public void CadastrarUsuario (Usuarios usuario) {
+        
+        System.out.println(this.getNome() + " está cadastrando um usuário.");
+        
+            this.sistemaBiblioteca.CadastrarUsuario(usuario);
+        
+    }
+    
+    public void RemoverUsuario (Usuarios usuario) {
+        
+        System.out.println(this.getNome() + " está removendo um usuário.");
+
+            this.sistemaBiblioteca.RemoverUsuario(usuario);
+            
+    }
+    
+    public void BuscarUsuarioPorNome (String nome) {
+        
+        System.out.println("Consultando usuário por nome...");
+        
+            this.sistemaBiblioteca.BuscarUsuarioPorNome(nome);
+            
+    }
+    
+    public void BuscarUsuarioPorCpf (String cpf) {
+        
+        System.out.println("Consultando usuário por CPF...");
+
+            this.sistemaBiblioteca.BuscarUsuarioPorCpf(cpf);
+            
+    }
+    
+    public void BuscarUsuarioPorMatricula (String matricula) {
+        
+        System.out.println("Consultando usuário por nome...");
+
+            this.sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
+            
+    }
 }
