@@ -39,7 +39,7 @@ public class SistemaBiblioteca {
     }
     
     //####################BUSCA##############################
-    public Livros BuscarLivroPorTitulo(String titulo) {
+    public List<Livros> BuscarLivroPorTitulo(String titulo) {
          
         List<Livros> resultados = new ArrayList<>(); //criar array de todos os resultados da busca
         
@@ -54,7 +54,7 @@ public class SistemaBiblioteca {
                 }
           }
           
-          return null; // Livro não encontrado
+          return resultados; // Livro não encontrado
           
       }
     
@@ -77,22 +77,22 @@ public class SistemaBiblioteca {
      
     public Livros BuscarLivroPorGenero(String genero) {
         
+        List<Livros> resultados = new ArrayList<>(); //criar array de todos os resultados da busca
+
             for (Livros l : acervo) {
 
-                if (l.getGenero().equals(genero)) {
+                    if (l.getGenero().equals(genero)) {
 
-                    System.out.println("Titulo encontrado: " + l);
+                        System.out.println("Titulo encontrado: " + l);
 
-                    return l;
-                  
+                        resultados.add(l);
+
+                    }
                 }
-            }
-          
-        System.out.println("Título não encontrado.\n");
-        
-        return null; // Livro não encontrado
-          
-      }
+
+            return null; // Livro não encontrado
+
+          }
     
     public Livros BuscarLivroPorAutor (String autor) {
          
@@ -108,8 +108,6 @@ public class SistemaBiblioteca {
                 }
         }
           
-        System.out.println("Título não encontrado.\n");
-
         return null; // Livro não encontrado
     }
     

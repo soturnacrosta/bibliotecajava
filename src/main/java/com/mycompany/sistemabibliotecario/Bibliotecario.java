@@ -62,6 +62,30 @@ public class Bibliotecario extends Usuarios {
             this.sistemaBiblioteca.BuscaLivroPorCodigo(codigo);
 
     }
+    
+    public void BuscaLivroPorTitulo (String titulo) {
+        
+        System.out.println("Consultando livro por titulo...");
+
+            this.sistemaBiblioteca.BuscarLivroPorTitulo(titulo);
+            
+    }
+    
+    public void BuscaLivroPorAutor (String autor) {
+        
+        System.out.println("Consultando livro por autor...");
+
+            this.sistemaBiblioteca.BuscarLivroPorAutor(autor);
+            
+    }
+    
+    public void BuscaLivroPorGenero (String genero) {
+        
+        System.out.println("Consultando livro por genero...");
+
+            this.sistemaBiblioteca.BuscarLivroPorGenero(genero);
+            
+    }
      
     public void ModificarUsuarios (String matricula, String novoNome, String novoCpf, String novaMatricula) {
         
@@ -116,6 +140,14 @@ public class Bibliotecario extends Usuarios {
         System.out.println("Consultando usuário por nome...");
 
             this.sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
+            
+    }
+    
+    public void VerAcervo () {
+        
+        System.out.println("Verificando acervo...");
+        
+            this.sistemaBiblioteca.getAcervo();
             
     }
 }
