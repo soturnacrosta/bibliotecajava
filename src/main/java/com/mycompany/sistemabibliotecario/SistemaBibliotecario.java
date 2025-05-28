@@ -13,7 +13,7 @@ public class SistemaBibliotecario {
     public static void main(String[] args) {
 
         Livros livro1 = new Livros ("dracula", "terror", "bram", "disponivel", "001");
-        Livros livro2 = new Livros ("dracula", "terror", "bram", "disponivel", "002");
+        Livros livro2 = new Livros ("c", "terror", "bram", "disponivel", "002");
         
         Usuarios usuario1 = new Usuarios ("MAilton2", "123", "001");
         Usuarios usuario2 = new Usuarios ("mailton2", "123", "999");
@@ -27,8 +27,12 @@ public class SistemaBibliotecario {
         bibliotecario1.CadastrarLivro(livro1);
         bibliotecario1.CadastrarLivro(livro2);
 
+        usuario1.EmprestarLivro(livro1);
+        usuario1.RemoverLivroEmprestado(livro1);
+        
+        //biblioteca1.RegistrarEmprestimo(usuario1, livro1);
+        //biblioteca1.RegistrarEmprestimo(usuario1, livro1);
 
-        bibliotecario1.VerAcervo();
         
         //bibliotecario1.CadastrarUsuario(usuario2);
         

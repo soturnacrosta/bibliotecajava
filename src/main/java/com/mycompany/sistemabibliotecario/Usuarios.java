@@ -48,14 +48,43 @@ public class Usuarios {
     }
     
     
-    public void EmprestarLivro (Livros livro) {
+    public boolean EmprestarLivro (Livros livro) { //precisa ser boolean para retornar true ou false
         
-        this.livros.add(livro);
+        if (livro != null && livro.status.equalsIgnoreCase("disponivel")) { // Verifica se o livro existe e está disponível
+                
+             this.livros.add(livro);
+                
+                livro.setStatus("Emprestado"); // O livro agora está emprestado
+                
+                System.out.println("Livro '" + livro.getTitulo() + "' adicionado à lista de '" + this.getNome() + "'.");
+                   
+            return true;
+        }
+         
+        else {
+            
+            System.out.println("Erro: Livro '" + (livro != null ? livro.getTitulo() : "nulo") + "' não pode ser emprestado (não disponível).");
+
+        }
+        
+        return false;
+        
     }
     
-    public void DevolverLivro (Livros livro) {
+      public boolean RemoverLivroEmprestado(Livros livro) {
+          
+        if (livro != null && this.livros.remove(livro)) { // Tenta remover da lista deste usuário
+            
+            livro.setStatus("Disponível"); // O livro agora está disponível
+            
+                System.out.println("Livro '" + livro.getTitulo() + "' removido da lista de '" + this.getNome() + "'.");
+            
+            return true;
+        }
         
-        this.livros.remove(livro);
+            System.out.println("Erro: Livro '" + (livro != null ? livro.getTitulo() : "nulo") + "' não estava emprestado por '" + this.getNome() + "'.");
+        
+        return false;
     }
 
     @Override

@@ -248,6 +248,40 @@ public class SistemaBiblioteca {
         }
     }
     
+    public void RegistrarEmprestimo (Usuarios usuario, Livros livro){
+        
+        
+        if (livro.status.equalsIgnoreCase("Disponivel")){
+            
+            System.out.println("Empréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
+            
+            livro.status = "indisponivel";
+            
+        }
+        
+        else {
+            
+            System.out.println("Livro indisponível.");
+            
+        }
+    }
+    
+    public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
+        
+        if (livro.status.equalsIgnoreCase("indisponivel")){
+            
+            System.out.println("Livro devolvido!");
+            
+            livro.status = "disponivel";
+            
+        }
+        
+        else {
+            
+            System.out.println("Livro não emprestado.");
+            
+        }
+    }
     
     @Override
     public String toString() {
