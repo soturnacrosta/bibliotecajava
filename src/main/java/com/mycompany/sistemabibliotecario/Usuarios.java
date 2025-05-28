@@ -85,6 +85,26 @@ public class Usuarios {
             System.out.println("Erro: Livro '" + (livro != null ? livro.getTitulo() : "nulo") + "' não estava emprestado por '" + this.getNome() + "'.");
         
         return false;
+        
+    }
+      
+    public boolean JaTemLivroEmprestado(Livros livro) {
+        
+        if (livro.status.equalsIgnoreCase("Emprestado")){
+            
+            System.out.println("Já emprestado.");
+            
+                return this.livros.contains(livro);
+
+        }
+        
+        else {
+            
+            System.out.println("Ainda não emprestado.");
+            
+            return false;
+        }
+        
     }
 
     @Override

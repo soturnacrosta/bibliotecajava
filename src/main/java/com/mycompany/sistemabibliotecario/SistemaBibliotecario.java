@@ -28,8 +28,7 @@ public class SistemaBibliotecario {
         bibliotecario1.CadastrarLivro(livro2);
 
         usuario1.EmprestarLivro(livro1);
-        usuario1.RemoverLivroEmprestado(livro1);
-        
+        usuario1.JaTemLivroEmprestado(livro1);
         //biblioteca1.RegistrarEmprestimo(usuario1, livro1);
         //biblioteca1.RegistrarEmprestimo(usuario1, livro1);
 
