@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Usuarios {
 
-    protected String nome, genero, cpf, matricula;
+    protected String nome, cpf, matricula;
     protected List<Livros> livros = new ArrayList<>(); //deixe que as listas sejam tratadas na propria classe
 
     public Usuarios(String nome, String cpf, String matricula) {
@@ -31,14 +31,6 @@ public class Usuarios {
         this.nome = nome;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -54,7 +46,8 @@ public class Usuarios {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-
+    
+    
     public void EmprestarLivro (Livros livro) {
         
         this.livros.add(livro);
@@ -67,7 +60,7 @@ public class Usuarios {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "nome=" + nome + ", genero=" + genero + ", cpf=" + cpf + ", matricula=" + matricula + ", livros=" + livros + '}';
+        return "Usuarios{" + "nome=" + nome + ", cpf=" + cpf + ", matricula=" + matricula + ", livros=" + livros + '}';
     }
     
 }

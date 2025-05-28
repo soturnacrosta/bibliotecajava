@@ -10,12 +10,13 @@ package com.mycompany.sistemabibliotecario;
  */
 public class Livros {
     
-    public String genero, autor, status;
+    public String genero, autor, status, titulo;
 
-    public Livros(String genero, String autor, String status) {
+    public Livros(String genero, String autor, String status, String titulo) {
         this.genero = genero;
         this.autor = autor;
         this.status = status;
+        this.titulo = titulo;
     }
 
     public String getGenero() {
@@ -40,6 +41,14 @@ public class Livros {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     @Override
