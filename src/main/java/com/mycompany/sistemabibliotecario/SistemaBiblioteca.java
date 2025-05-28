@@ -40,14 +40,16 @@ public class SistemaBiblioteca {
     
     //####################BUSCA##############################
     public Livros BuscarLivroPorTitulo(String titulo) {
+         
+        List<Livros> resultados = new ArrayList<>(); //criar array de todos os resultados da busca
         
             for (Livros l : acervo) {
 
                 if (l.getTitulo().equals(titulo)) {
 
-                  System.out.println("Titulo encontrado: " + l);
+                    System.out.println("Titulo encontrado: " + l);
 
-                  return l;
+                    resultados.add(l); //retorna todos os resultados adicionando o list
 
                 }
           }
@@ -58,13 +60,16 @@ public class SistemaBiblioteca {
     
     public Livros BuscarLivroPorGenero(String genero) {
         
+        List<Livros> resultados = new ArrayList<>();
+
             for (Livros l : acervo) {
 
                 if (l.getGenero().equals(genero)) {
 
-                  System.out.println("Titulo encontrado: " + l);
+                    System.out.println("Titulo encontrado: " + l);
 
-                  return l;
+                    resultados.add(l);
+                  
                 }
             }
           
@@ -76,13 +81,15 @@ public class SistemaBiblioteca {
     
     public Livros BuscarLivroPorAutor (String autor) {
          
+        List<Livros> resultados = new ArrayList<>();
+
         for (Livros l : acervo) {
               
                 if (l.getAutor().equals(autor)) {
 
                     System.out.println("Titulo encontrado: " + l);
 
-                    return l;
+                    resultados.add(l);
                 }
         }
           
@@ -119,13 +126,15 @@ public class SistemaBiblioteca {
 
     public Usuarios buscarUsuarioPorMatricula(String matricula) {
         
+        List<Usuarios> resultados = new ArrayList<>();
+        
         for (Usuarios u : usuariosCadastrados) {
             
             if (u.getMatricula().equalsIgnoreCase(matricula)) {
                 
                 System.out.println("Encontrado: " + u);
                 
-                return u;
+                resultados.add(u);
             }
             
         }
@@ -137,13 +146,16 @@ public class SistemaBiblioteca {
     
         public Usuarios buscarUsuarioPorCpf(String cpf) {
         
+        List<Usuarios> resultados = new ArrayList<>();
+
         for (Usuarios u : usuariosCadastrados) {
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
-                    System.out.println("Encontrado: " + u);
+                System.out.println("Encontrado: " + u);
                 
-                return u;
+            resultados.add(u);
+                
             }
             
         }
@@ -155,22 +167,24 @@ public class SistemaBiblioteca {
         
     public Usuarios buscarUsuarioPorNome (String nome) {
 
-            for (Usuarios u : usuariosCadastrados) {
+        List<Usuarios> resultados = new ArrayList<>();
 
-                if (u.getNome().equalsIgnoreCase(nome)) {
-                    
-                    System.out.println("Encontrado: " + u);
+        for (Usuarios u : usuariosCadastrados) {
 
-                return u;
-                
-                }
+            if (u.getNome().equalsIgnoreCase(nome)) {
+
+                System.out.println("Encontrado: " + u);
+
+            resultados.add(u);
 
             }
-            
-            System.out.println("Usuário não encontrado.");
 
-            return null; // Usuário não encontrado
         }
+
+        System.out.println("Usuário não encontrado.");
+
+        return null; // Usuário não encontrado
+    }
 
     public boolean AtualizarLivro (String titulo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
         
@@ -179,10 +193,11 @@ public class SistemaBiblioteca {
         if (livroAtualizar != null) {
 
                 livroAtualizar.setTitulo(novoTitulo);
-
                 livroAtualizar.setAutor(novoAutor);
+                livroAtualizar.setGenero(novoGenero);
+                livroAtualizar.setStatus(novoStatus);
 
-                    System.out.println("Livro " + titulo + " atualizado para " + novoTitulo + " do autor " + novoAutor);
+                    System.out.println("Livro " + titulo + " atualizado para " + novoTitulo + " do autor " + novoAutor + "\nGenero: " + novoGenero + "\nStatus: " + novoStatus);
         
             return true;
             
