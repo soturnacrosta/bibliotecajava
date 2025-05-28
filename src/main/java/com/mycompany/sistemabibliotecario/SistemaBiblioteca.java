@@ -58,17 +58,32 @@ public class SistemaBiblioteca {
           
       }
     
+    public Livros BuscaLivroPorCodigo (String codigo) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
+        
+        for (Livros l : acervo) {
+
+                if (l.getCodigo().equalsIgnoreCase(codigo)) {
+
+                    System.out.println("Titulo encontrado: " + l);
+
+                    return l; //retorna todos os resultados adicionando o list
+
+                }
+          }
+          
+          return null; // Livro não encontrado
+          
+    }
+     
     public Livros BuscarLivroPorGenero(String genero) {
         
-        List<Livros> resultados = new ArrayList<>();
-
             for (Livros l : acervo) {
 
                 if (l.getGenero().equals(genero)) {
 
                     System.out.println("Titulo encontrado: " + l);
 
-                    resultados.add(l);
+                    return l;
                   
                 }
             }
@@ -145,7 +160,7 @@ public class SistemaBiblioteca {
            
         public Usuarios buscarUsuarioPorCpf(String cpf) {
         
-        for (Usuarios u : usuariosCadastrados) {
+        for (Usuarios u : usuariosCadastrados) { //como cpf e matricula são unicos, não precisa retornar multiplos retornados, nada de lista
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
@@ -183,9 +198,9 @@ public class SistemaBiblioteca {
         return null; // Usuário não encontrado
     }
 
-    public boolean AtualizarLivro (String titulo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
+    public boolean AtualizarLivro (String codigo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
         
-        Livros livroAtualizar = BuscarLivroPorTitulo(titulo); //usar o método de busca lá encima pra procurará
+        Livros livroAtualizar = BuscaLivroPorCodigo (codigo); //usar o método de busca lá encima pra procurará
         
         if (livroAtualizar != null) {
 
@@ -196,7 +211,7 @@ public class SistemaBiblioteca {
                 livroAtualizar.setGenero(novoGenero);
                 livroAtualizar.setStatus(novoStatus);
 
-                    System.out.println("Livro " + titulo + " atualizado para " + novoTitulo + " do autor " + novoAutor + "\nGenero: " + novoGenero + "\nStatus: " + novoStatus);
+                    System.out.println("Livro atualizado!\nTitulo antigo: " + codigo + "\nAtualizado para:\nNovo Título: " + novoTitulo + "\nNovo autor: " + novoAutor + "\nNovo Genero: " + novoGenero + "\nNovo Status: " + novoStatus);
         
             return true;
             

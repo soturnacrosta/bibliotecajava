@@ -32,11 +32,11 @@ public class Bibliotecario extends Usuarios {
      
     }
     
-     public void modificarDadosLivro(String titulo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
+    public void ModificarDadosLivro(String codigo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
         
          System.out.println(this.getNome() + " está modificando um livro.");
 
-         if (this.sistemaBiblioteca.AtualizarLivro(titulo, novoTitulo, novoAutor, novoGenero, novoStatus)) {
+         if (this.sistemaBiblioteca.AtualizarLivro(codigo, novoTitulo, novoAutor, novoGenero, novoStatus)) {
             
             System.out.println("Modificação de livro concluída por " + this.getNome());
             
@@ -48,5 +48,6 @@ public class Bibliotecario extends Usuarios {
             System.out.println("Falha na modificação do livro por " + this.getNome());
         }
     }
+     
     
 }
