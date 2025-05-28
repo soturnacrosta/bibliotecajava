@@ -13,7 +13,7 @@ public class SistemaBibliotecario {
     public static void main(String[] args) {
 
         Livros livro1 = new Livros ("terror", "bram", "disponivel", "dracula");
-        Livros livro2 = new Livros ("terror", "STOKER", "disponivel", "alucard");
+        Livros livro2 = new Livros ("terror", "bram", "disponivel", "alucard");
 
        // Livros livro3 = new Livros ("teste", "arroz", "a", "123");
         
@@ -28,12 +28,30 @@ public class SistemaBibliotecario {
 
 
         Usuarios usuario = new Usuarios ("MAilton", "123", "1244");
+        biblioteca1.CadastrarUsuario(usuario);
+        
+        biblioteca1.buscarUsuarioPorMatricula("1244");
+        
+        biblioteca1.AtualizarUsuario("1244", "marcos", "100", "002");
+        
+        
+        biblioteca1.BuscarLivroPorAutor("arroz");
+        
+        /*
+        biblioteca1.buscarUsuarioPorMatricula("002");
+        
+        biblioteca1.RemoverUsuario(usuario);
+        
+        biblioteca1.buscarUsuarioPorNome("marcos"); */
+
+        
+        //System.out.println(usuario);
        
-        biblioteca1.BuscarLivroPorGenero("terror");
+        //biblioteca1.BuscarLivroPorAutor("bram");
 
-
+        //biblioteca1.AtualizarLivro("dracula", "frankenstein", "maria", "terror", "devolvido");
                    
-
+       //System.out.println(biblioteca1);
         
     }
 }

@@ -94,6 +94,8 @@ public class SistemaBiblioteca {
     //#######################CONSULTA COMPLETA################################3
     public List<Livros> getAcervo() { //consulta completa do acervo
 
+        System.out.println(acervo);
+
         return new ArrayList<>(acervo);
         
     }
@@ -128,6 +130,8 @@ public class SistemaBiblioteca {
             
         }
         
+            System.out.println("Usuário não encontrado.");
+
         return null; // Usuário não encontrado
     }
     
@@ -137,14 +141,14 @@ public class SistemaBiblioteca {
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
-                System.out.println("Encontrado: " + u);
+                    System.out.println("Encontrado: " + u);
                 
                 return u;
             }
             
         }
         
-        System.out.println("Não encontrado");
+            System.out.println("Usuário não encontrado.");
 
         return null; // Usuário não encontrado
     }
@@ -155,18 +159,74 @@ public class SistemaBiblioteca {
 
                 if (u.getNome().equalsIgnoreCase(nome)) {
                     
-                System.out.println("Encontrado: " + u);
+                    System.out.println("Encontrado: " + u);
 
-                    return u;
+                return u;
+                
                 }
 
             }
+            
+            System.out.println("Usuário não encontrado.");
 
             return null; // Usuário não encontrado
         }
 
+    public boolean AtualizarLivro (String titulo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) {
+        
+        Livros livroAtualizar = BuscarLivroPorTitulo(titulo); //usar o método de busca lá encima pra procurará
+        
+        if (livroAtualizar != null) {
+
+                livroAtualizar.setTitulo(novoTitulo);
+
+                livroAtualizar.setAutor(novoAutor);
+
+                    System.out.println("Livro " + titulo + " atualizado para " + novoTitulo + " do autor " + novoAutor);
+        
+            return true;
+            
+        }
+        
+        else {
+            
+                System.out.println("Erro, livro não encontrado.");
+            
+            return false;
+            
+        }
+        
+        
+    }
+    
+    public  boolean AtualizarUsuario (String matricula, String novoNome, String novoCpf, String novaMatricula){
+        
+        Usuarios usuarioAtualizar = buscarUsuarioPorMatricula(matricula);
+        
+        if (usuarioAtualizar != null) {
+            
+            usuarioAtualizar.setNome(novoNome);
+            usuarioAtualizar.setCpf(novoCpf);
+            usuarioAtualizar.setMatricula(novaMatricula);
+            
+                System.out.println("Usuário " + matricula + " atualizado para:\nNome: " + novoNome + "\nCPF: " + novoCpf + "\nMatricula: " + novaMatricula);
+                
+            return true;
+                
+        }
+        
+        else {
+            
+            System.out.println("Erro, usuario não encontrado;");
+            
+            return false;
+        }
+    }
+    
+    
     @Override
     public String toString() {
+        
         return "SistemaBiblioteca{" + "acervo=" + acervo + ", usuariosCadastrados=" + usuariosCadastrados + '}';
     }
     
