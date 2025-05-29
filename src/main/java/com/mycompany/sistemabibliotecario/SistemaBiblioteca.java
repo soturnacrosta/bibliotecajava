@@ -59,7 +59,7 @@ public class SistemaBiblioteca {
           
       }
     
-    public Livros BuscaLivroPorCodigo (String codigo) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
+    public Livros BuscarLivroPorCodigo (String codigo) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
         
         for (Livros l : acervo) {
 
@@ -197,7 +197,7 @@ public class SistemaBiblioteca {
 
     public boolean AtualizarLivro (String codigo, String novoTitulo, String novoAutor, String novoGenero, String novoStatus) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
         
-        Livros livroAtualizar = BuscaLivroPorCodigo (codigo); //usar o método de busca lá encima pra procurará
+        Livros livroAtualizar = BuscarLivroPorCodigo (codigo); //usar o método de busca lá encima pra procurará
         
         if (livroAtualizar != null) {
 

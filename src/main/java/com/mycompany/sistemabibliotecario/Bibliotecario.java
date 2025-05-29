@@ -59,7 +59,7 @@ public class Bibliotecario extends Usuarios {
         
         System.out.println("Consultando livro por codigo...");
         
-            this.sistemaBiblioteca.BuscaLivroPorCodigo(codigo);
+            this.sistemaBiblioteca.BuscarLivroPorCodigo(codigo);
 
     }
     
