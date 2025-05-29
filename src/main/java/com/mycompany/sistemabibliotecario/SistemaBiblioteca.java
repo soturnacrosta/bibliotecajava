@@ -255,7 +255,7 @@ public class SistemaBiblioteca {
             
             System.out.println("Empréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
             
-            livro.status = "indisponivel";
+            livro.status = "emprestado";
             
         }
         
@@ -268,7 +268,7 @@ public class SistemaBiblioteca {
     
     public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
         
-        if (livro.status.equalsIgnoreCase("indisponivel")){
+        if (livro.status.equalsIgnoreCase("emprestado")){
             
             System.out.println("Livro devolvido!");
             

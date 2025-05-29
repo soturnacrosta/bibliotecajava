@@ -150,4 +150,21 @@ public class Bibliotecario extends Usuarios {
             this.sistemaBiblioteca.getAcervo();
             
     }
+    
+    public void RegistrarEmprestimo (Usuarios usuario, Livros livro) {
+        
+        System.out.println("Registrando emprestimo...");
+        
+            this.sistemaBiblioteca.RegistrarEmprestimo(usuario, livro);
+            
+    }
+    
+    public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
+        
+        System.out.println("Encerrando emprestimo...");
+        
+            this.sistemaBiblioteca.EncerrarEmprestimo(usuario, livro);
+            
+    }
+            
 }

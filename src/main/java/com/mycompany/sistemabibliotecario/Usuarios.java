@@ -75,7 +75,7 @@ public class Usuarios {
           
         if (livro != null && this.livros.remove(livro)) { // Tenta remover da lista deste usuário
             
-            livro.setStatus("Disponível"); // O livro agora está disponível
+            livro.setStatus("Disponivel"); // O livro agora está disponível
             
                 System.out.println("Livro '" + livro.getTitulo() + "' removido da lista de '" + this.getNome() + "'.");
             
