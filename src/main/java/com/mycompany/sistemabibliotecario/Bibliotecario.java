@@ -111,11 +111,11 @@ public class Bibliotecario extends Usuarios {
         
     }
     
-    public void RemoverUsuario (Usuarios usuario) {
+    public void RemoverUsuario (String matricula) {
+        
+        Usuarios usuario = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
         
         System.out.println(this.getNome() + " está removendo um usuário.");
-
-            this.sistemaBiblioteca.RemoverUsuario(usuario);
             
     }
     
