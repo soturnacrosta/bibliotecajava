@@ -21,7 +21,7 @@ public class SistemaBibliotecario {
         System.out.println("Bem vindo!");  
         System.out.println("Selecione uma das opções:");   
         System.out.println("1. Entrar como usuário.");
-        System.out.println("2. Entrar como bibliotecário.\n");
+        System.out.println("2. Entrar como bibliotecário.");
         System.out.println("\n0. Encerrar.");
         System.out.println("##############XXXXXXXXXX##############");
             escolha = teclado.nextLine();
@@ -174,9 +174,9 @@ public class SistemaBibliotecario {
                         System.out.println("1. Consultar acervo de livros.");
                         System.out.println("2. Consultar usuários.");
                         System.out.println("3. Cadastrar, atualizar ou remover título.");
-                        System.out.println("4. Cadastrar, atualizar ou remover usuário.\n");
+                        System.out.println("4. Cadastrar, atualizar ou remover usuário.");
                         System.out.println("5. Registrar ou encerrar empréstimo.");
-                        System.out.println("0. Encerrar.");
+                        System.out.println("\n0. Encerrar.");
                         System.out.println("##############XXXXXXXXXX##############");
                             escolha = teclado.nextLine();
 
@@ -298,6 +298,8 @@ public class SistemaBibliotecario {
                                         else {
                                             
                                             System.out.println("Erro! Opção inválida.");
+                                            
+                                            break;
                                             
                                         }
                                 
@@ -445,7 +447,56 @@ public class SistemaBibliotecario {
                                             }
 
                                     break;
+                                
+                                    
+                                case "5": //emprestimos de livros
+                                    
+                                    System.out.println("\n##############BIBLIOTECA##############");
+                                    System.out.println("Selecione uma das opções:"); 
+                                    System.out.println("1. Registrar empréstimo.");
+                                    System.out.println("2. Encerrar empréstimo.");
+                                    System.out.println("\n0. Encerrar.");
+                                    System.out.println("##############XXXXXXXXXX##############");
+                                        escolha = teclado.nextLine();
+                                        
+                                        if (escolha.equals("1")) { //registro de emprestimo
+                                            
+                                            System.out.print("Digite o código de barras: ");
+                                                String codigoEmprestimo = teclado.nextLine();
+                                                
+                                            System.out.print("Digite a matricula do usuário: ");
+                                                String matriculaEmprestimo = teclado.nextLine();
+                                                
+                                              bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
+                                              
+                                              break;
+                                              
+                                        }
+                                        
+                                        else if (escolha.equals("2")) {
 
+                                            System.out.print("Digite o código de barras: ");
+                                                String codigoEmprestimo = teclado.nextLine();
+
+                                            System.out.print("Digite a matricula do usuário: ");
+                                                String matriculaEmprestimo = teclado.nextLine();
+                                                
+                                            bibliotecario.EncerrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
+                                            
+                                        }
+                                        
+                                        else if (escolha.equals("0")) {
+                                            
+                                            
+                                        }
+                                        
+                                        else {
+                                            
+                                            System.out.println("Opção inválida!");
+                                            
+                                            break;
+                                            
+                                        }
                             }
 
                     break;

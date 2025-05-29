@@ -151,19 +151,27 @@ public class Bibliotecario extends Usuarios {
             
     }
     
-    public void RegistrarEmprestimo (Usuarios usuario, Livros livro) {
+    public void RegistrarEmprestimo (String matricula, String codigo) {
         
+        Usuarios usuarioEmprestimo = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
+
+        Livros livroEmprestimo = sistemaBiblioteca.BuscarLivroPorCodigo(codigo);
+
         System.out.println("Registrando emprestimo...");
         
-            this.sistemaBiblioteca.RegistrarEmprestimo(usuario, livro);
+            this.sistemaBiblioteca.RegistrarEmprestimo(usuarioEmprestimo, livroEmprestimo);
             
     }
     
-    public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
+    public void EncerrarEmprestimo (String matricula, String codigo) {
+        
+        Usuarios usuarioEmprestimo = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
+
+        Livros livroEmprestimo = sistemaBiblioteca.BuscarLivroPorCodigo(codigo);
         
         System.out.println("Encerrando emprestimo...");
         
-            this.sistemaBiblioteca.EncerrarEmprestimo(usuario, livro);
+            this.sistemaBiblioteca.EncerrarEmprestimo(usuarioEmprestimo, livroEmprestimo);
             
     }
             

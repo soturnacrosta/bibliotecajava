@@ -251,25 +251,26 @@ public class SistemaBiblioteca {
     
     public void RegistrarEmprestimo (Usuarios usuario, Livros livro){
         
-        
-        if (livro.status.equalsIgnoreCase("Disponivel")){
-            
-            System.out.println("\nEmpréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
-            
-            livro.status = "emprestado";
-            
+          
+        if (livro.getStatus().equalsIgnoreCase("Disponivel")){
+
+                System.out.println("\nEmpréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
+
+                livro.status = "emprestado";
+
         }
-        
+
         else {
-            
+
             System.out.println("Livro indisponível.");
-            
+
         }
+            
     }
     
     public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
         
-        if (livro.status.equalsIgnoreCase("emprestado")){
+        if (livro.getStatus().equalsIgnoreCase("emprestado")){
             
             System.out.println("\nLivro devolvido!");
             
