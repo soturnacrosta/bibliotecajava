@@ -19,7 +19,6 @@ public class Livros {
         this.autor = autor;
         this.status = status;
         this.codigo = codigo;
-     
     }
 
     public String getGenero() {

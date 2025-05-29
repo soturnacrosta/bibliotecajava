@@ -48,7 +48,7 @@ public class SistemaBiblioteca {
 
                 if (l.getTitulo().equalsIgnoreCase(titulo)) {
 
-                    System.out.println("Titulo encontrado: " + l);
+                    System.out.println("\nTitulo encontrado: " + l);
 
                     resultados.add(l); //retorna todos os resultados adicionando o list
 
@@ -65,7 +65,7 @@ public class SistemaBiblioteca {
 
                 if (l.getCodigo().equalsIgnoreCase(codigo)) {
 
-                    System.out.println("Titulo encontrado: " + l);
+                    System.out.println("\nTitulo encontrado: " + l);
 
                     return l; //retorna todos os resultados adicionando o list
 
@@ -84,7 +84,7 @@ public class SistemaBiblioteca {
 
                     if (l.getGenero().equals(genero)) {
 
-                        System.out.println("Titulo encontrado: " + l);
+                        System.out.println("\nTitulo encontrado: " + l);
 
                         resultados.add(l);
 
@@ -103,7 +103,7 @@ public class SistemaBiblioteca {
               
                 if (l.getAutor().equals(autor)) {
 
-                    System.out.println("Titulo encontrado: " + l);
+                    System.out.println("\nTitulo encontrado: " + l);
 
                     resultados.add(l);
                 }
@@ -126,7 +126,7 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.add(usuario);
         
-        System.out.println("Usuário '" + usuario.getNome() + "' cadastrado.\n");
+        System.out.println("\nUsuário '" + usuario.getNome() + "' cadastrado.\n");
         
     }
     
@@ -134,7 +134,7 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.remove(usuario);
         
-        System.out.println("Usuário '" + usuario.getNome() + "' excluído.\n");
+        System.out.println("\nUsuário '" + usuario.getNome() + "' excluído.\n");
 
     }
 
@@ -144,7 +144,7 @@ public class SistemaBiblioteca {
             
             if (u.getMatricula().equalsIgnoreCase(matricula)) {
                 
-                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
+                System.out.println("\nUsuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
                 return u; // <--- Retorna o usuário IMEDIATAMENTE quando encontra
             }
             
@@ -163,7 +163,7 @@ public class SistemaBiblioteca {
             
             if (u.getCpf().equalsIgnoreCase(cpf)) {
                 
-                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
+                System.out.println("\nUsuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
                 
                 return u;
                 
@@ -184,7 +184,7 @@ public class SistemaBiblioteca {
 
             if (u.getNome().equalsIgnoreCase(nome)) {
 
-                System.out.println("Usuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
+                System.out.println("\nUsuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
 
             resultados.add(u);
 
@@ -235,7 +235,7 @@ public class SistemaBiblioteca {
             usuarioAtualizar.setCpf(novoCpf);
             usuarioAtualizar.setMatricula(novaMatricula);
             
-                System.out.println("Usuário " + matricula + " atualizado para:\nNome: " + novoNome + "\nCPF: " + novoCpf + "\nMatricula: " + novaMatricula);
+                System.out.println("\nUsuário " + matricula + " atualizado para:\nNome: " + novoNome + "\nCPF: " + novoCpf + "\nMatricula: " + novaMatricula);
                 
             return true;
                 
@@ -254,7 +254,7 @@ public class SistemaBiblioteca {
         
         if (livro.status.equalsIgnoreCase("Disponivel")){
             
-            System.out.println("Empréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
+            System.out.println("\nEmpréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
             
             livro.status = "emprestado";
             
@@ -271,7 +271,7 @@ public class SistemaBiblioteca {
         
         if (livro.status.equalsIgnoreCase("emprestado")){
             
-            System.out.println("Livro devolvido!");
+            System.out.println("\nLivro devolvido!");
             
             livro.status = "disponivel";
             
@@ -279,7 +279,7 @@ public class SistemaBiblioteca {
         
         else {
             
-            System.out.println("Livro não emprestado.");
+            System.out.println("\nLivro não emprestado.");
             
         }
     }
