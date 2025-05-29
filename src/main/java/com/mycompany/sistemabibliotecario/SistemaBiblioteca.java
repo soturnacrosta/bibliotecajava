@@ -82,7 +82,7 @@ public class SistemaBiblioteca {
 
             for (Livros l : acervo) {
 
-                    if (l.getGenero().equals(genero)) {
+                    if (l.getGenero().equalsIgnoreCase(genero)) {
 
                         System.out.println("\nTitulo encontrado: " + l);
 
@@ -101,7 +101,7 @@ public class SistemaBiblioteca {
 
         for (Livros l : acervo) {
               
-                if (l.getAutor().equals(autor)) {
+                if (l.getAutor().equalsIgnoreCase(autor)) {
 
                     System.out.println("\nTitulo encontrado: " + l);
 
@@ -201,14 +201,14 @@ public class SistemaBiblioteca {
         
         if (livroAtualizar != null) {
 
-                System.out.println("DEBUG (AtualizarLivro): Livro encontrado! Atualizando dados...");
+                System.out.println("\nLivro encontrado! Atualizando dados...\n");
 
                 livroAtualizar.setTitulo(novoTitulo);
                 livroAtualizar.setAutor(novoAutor);
                 livroAtualizar.setGenero(novoGenero);
                 livroAtualizar.setStatus(novoStatus);
 
-                    System.out.println("Livro atualizado!\nTitulo antigo: " + codigo + "\nAtualizado para:\nNovo Título: " + novoTitulo + "\nNovo autor: " + novoAutor + "\nNovo Genero: " + novoGenero + "\nNovo Status: " + novoStatus);
+                    System.out.println("\nLivro atualizado!\nTitulo antigo: \n" + codigo + "\nAtualizado para:\nNovo Título: " + novoTitulo + "\nNovo autor: " + novoAutor + "\nNovo Genero: " + novoGenero + "\nNovo Status: " + novoStatus);
         
             return true;
             

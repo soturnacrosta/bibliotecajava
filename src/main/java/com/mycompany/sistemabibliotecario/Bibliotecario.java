@@ -33,7 +33,7 @@ public class Bibliotecario extends Usuarios {
     
     public void RemoverLivro (Livros livro) {
         
-        System.out.println(this.getNome() + " está removendo um livro.");
+        System.out.println("\n" + this.getNome() + " está removendo um livro.");
         
             this.sistemaBiblioteca.RemoverLivro(livro);
         
@@ -137,7 +137,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscarUsuarioPorMatricula (String matricula) {
         
-        System.out.println("Consultando usuário por nome...");
+        System.out.println("Consultando usuário por matricula...");
 
             this.sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
             
