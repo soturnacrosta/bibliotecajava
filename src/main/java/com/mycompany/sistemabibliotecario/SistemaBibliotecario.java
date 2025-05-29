@@ -131,6 +131,8 @@ public class SistemaBibliotecario {
 
                                    default:
 
+                                       System.out.println("Opção inválida! Encerrando...");
+                                       
                                        break;
                                 
                                 }
@@ -241,8 +243,14 @@ public class SistemaBibliotecario {
                                             break;
                                             
                                         }
-                                    
-                                    break;
+                                        
+                                        else {
+                                            
+                                            System.out.println("Opção inválida! Encerrando...");
+                                            
+                                            break;
+
+                                        }
                                     
                                 case "2": //consultar usuários
                                     
@@ -297,7 +305,7 @@ public class SistemaBibliotecario {
                                         
                                         else {
                                             
-                                            System.out.println("Erro! Opção inválida.");
+                                            System.out.println("Opção inválida! Encerrando...");
                                             
                                             break;
                                             
@@ -376,6 +384,14 @@ public class SistemaBibliotecario {
                                             
                                             break;
                                         }
+                                        
+                                        else {
+                                            
+                                            System.out.println("Opção inválida! Encerrando...");
+                                            
+                                            break;
+
+                                        }
                                     
                                 case "4": //gerenciar usuarios í
 
@@ -445,10 +461,15 @@ public class SistemaBibliotecario {
                                                 break;
                                                 
                                             }
+                                            
+                                            else {
+                                                
+                                                System.out.println("Opção inválida! Encerrando...");
+                                                
+                                                break;
 
-                                    break;
-                                
-                                    
+                                            }
+
                                 case "5": //emprestimos de livros
                                     
                                     System.out.println("\n##############BIBLIOTECA##############");
@@ -460,7 +481,7 @@ public class SistemaBibliotecario {
                                         escolha = teclado.nextLine();
                                         
                                         if (escolha.equals("1")) { //registro de emprestimo
-                                            
+
                                             System.out.print("Digite o código de barras: ");
                                                 String codigoEmprestimo = teclado.nextLine();
                                                 
@@ -513,7 +534,7 @@ public class SistemaBibliotecario {
 
                     break;
             }
-            
+          
             break;
         }
     }

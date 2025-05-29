@@ -150,7 +150,7 @@ public class SistemaBiblioteca {
             
         }
         
-        System.out.println("DEBUG (buscarUsuarioPorMatricula): Usuário com matrícula '" + matricula + "' não encontrado.");
+        System.out.println("Usuário com matrícula '" + matricula + "' não encontrado.");
         
         return null; // Retorna null se nenhum usuário for encontrado
         
