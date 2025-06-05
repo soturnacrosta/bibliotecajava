@@ -30,7 +30,8 @@ public class SistemaBibliotecario {
             List <Livros> livros = new ArrayList<>();
             List <Bibliotecario> bibliotecarios = new ArrayList();
             SistemaBiblioteca biblioteca = new SistemaBiblioteca(); //criação das listas quando o usuario inicia o software
-   
+            //Usuarios usuario1 = new Usuarios ("teste", "123", "123");
+            //biblioteca.CadastrarUsuario(usuario1);
         while (!escolha.equals("0")){
 
             switch (escolha) {
@@ -50,73 +51,72 @@ public class SistemaBibliotecario {
                                 switch (escolha) {
 
                                    case "1":
+                                       
+                                        do {
+                                           
+                                            System.out.println("\n##############BIBLIOTECA##############");
+                                            System.out.println("Selecione uma das opções:"); 
+                                            System.out.println("1. Busca por título.");
+                                            System.out.println("2. Busca por genero.");
+                                            System.out.println("3. Busca por autor.");
+                                            System.out.println("4. Busca por código de barras.");
+                                            System.out.println("\n0. Encerrar.");
+                                            System.out.println("##############XXXXXXXXXX##############");
+                                                escolha = teclado.nextLine();
+
+                                                if (escolha.equals("1")) {
+
+                                                    System.out.print("Digite o nome do titulo: ");
+                                                        String tituloBusca = teclado.nextLine();
+
+                                                    biblioteca.BuscarLivroPorTitulo(tituloBusca);
+
+                                                }
+
+                                                else if (escolha.equals("2")) {
+
+                                                    System.out.print("Digite o genero: ");
+                                                        String generoBusca = teclado.nextLine();
+
+                                                    biblioteca.BuscarLivroPorGenero(generoBusca);
+
+                                                }
+
+                                                else if (escolha.equals("3")) {
+
+                                                    System.out.println("Digite o autor: ");
+                                                        String autorBusca = teclado.nextLine();
+
+                                                    biblioteca.BuscarLivroPorAutor(autorBusca);
+
+                                                }
+
+                                                else if (escolha.equals("4")) {
+
+                                                    System.out.println("Digite o código de barras: ");
+                                                        String codigoBusca = teclado.nextLine();
+
+                                                    biblioteca.BuscarLivroPorCodigo(codigoBusca);
+
+                                                }
+
+                                                else if (escolha.equals("0")) {
+
+                                                    System.out.println("Encerrando...");
+
+                                                    break;
+
+                                                }
+
+                                                else {
+
+                                                    System.out.println("Opção inválida!");
+
+                                                }
                                         
-                                        System.out.println("\n##############BIBLIOTECA##############");
-                                        System.out.println("Selecione uma das opções:"); 
-                                        System.out.println("1. Busca por título.");
-                                        System.out.println("2. Busca por genero.");
-                                        System.out.println("3. Busca por autor.");
-                                        System.out.println("4. Busca por código de barras.");
-                                        System.out.println("\n0. Encerrar.");
-                                        System.out.println("##############XXXXXXXXXX##############");
-                                            escolha = teclado.nextLine();
-
-                                            if (escolha.equals("1")) {
-
-                                                System.out.print("Digite o nome do titulo: ");
-                                                    String tituloBusca = teclado.nextLine();
-
-                                                biblioteca.BuscarLivroPorTitulo(tituloBusca);
-
-                                                break;
-                                            }
-
-                                            else if (escolha.equals("2")) {
-
-                                                System.out.print("Digite o genero: ");
-                                                    String generoBusca = teclado.nextLine();
-
-                                                biblioteca.BuscarLivroPorGenero(generoBusca);
-
-                                                break;
-                                            }
-
-                                            else if (escolha.equals("3")) {
-
-                                                System.out.println("Digite o autor: ");
-                                                    String autorBusca = teclado.nextLine();
-
-                                                biblioteca.BuscarLivroPorAutor(autorBusca);
-
-                                                break;
-                                            }
-
-                                            else if (escolha.equals("4")) {
-
-                                                System.out.println("Digite o código de barras: ");
-                                                    String codigoBusca = teclado.nextLine();
-
-                                                biblioteca.BuscarLivroPorCodigo(codigoBusca);
-
-                                                break;
-                                            }
-
-                                            else if (escolha.equals("0")) {
-
-                                                System.out.println("Encerrando...");
-
-                                                break;
-
-                                            }
-                                            
-                                            else {
-                                                
-                                                System.out.println("Opção inválida!");
-                                                
-                                            }
-
+                                        } while (!escolha.equals("0"));
+                                        
                                         break;
-
 
                                    case "0":
 
@@ -499,8 +499,6 @@ public class SistemaBibliotecario {
                                             }
 
                                             else if (escolha.equals("0")) {
-                                                
-                                                System.out.println("Encerrando...");
                                                 
                                                 break;
 

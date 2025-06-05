@@ -273,7 +273,7 @@ public class SistemaBiblioteca {
     
     public void RegistrarEmprestimo (Usuarios usuario, Livros livro){
         
-        if (livro != null){
+        if (livro != null && usuario != null){
 
             if (livro.getStatus().equalsIgnoreCase("Disponivel")){
 
@@ -293,7 +293,7 @@ public class SistemaBiblioteca {
 
         else {
 
-            System.out.println("Erro! livro não registrado.");
+           System.out.println("Erro! livro ou usuário não registrado.");
    
         }
 
@@ -301,7 +301,7 @@ public class SistemaBiblioteca {
 
     public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
         
-       if (livro != null){
+       if (livro != null && usuario != null){
            
               if (livro.getStatus().equalsIgnoreCase("emprestado")){
             
@@ -321,7 +321,7 @@ public class SistemaBiblioteca {
        
        else {
                      
-           System.out.println("Erro! livro não registrado.");
+           System.out.println("Erro! livro ou usuário não registrado.");
 
        }
      
