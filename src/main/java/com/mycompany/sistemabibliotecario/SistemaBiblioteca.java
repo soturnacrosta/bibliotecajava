@@ -170,7 +170,7 @@ public class SistemaBiblioteca {
             
         }
         
-        System.out.println("Usuário com matrícula '" + matricula + "' não encontrado.");
+        System.out.println("\nUsuário não encontrado com esses critérios.\n");
         
         return null; // Retorna null se nenhum usuário for encontrado
         
@@ -191,7 +191,7 @@ public class SistemaBiblioteca {
             
         }
         
-            System.out.println("Usuário não encontrado.\n");
+            System.out.println("\nUsuário não encontrado com esses critérios.\n");
 
         return null; // Usuário não encontrado
     }
@@ -211,6 +211,8 @@ public class SistemaBiblioteca {
             }
 
         }
+
+        System.out.println("\nUsuário não encontrado com esses critérios.\n");
 
         return resultados; // Usuário não encontrado
     }
@@ -271,38 +273,58 @@ public class SistemaBiblioteca {
     
     public void RegistrarEmprestimo (Usuarios usuario, Livros livro){
         
-          
-        if (livro.getStatus().equalsIgnoreCase("Disponivel")){
+        if (livro != null){
+
+            if (livro.getStatus().equalsIgnoreCase("Disponivel")){
 
                 System.out.println("\nEmpréstimo de '" + livro.getTitulo() + "' para '" + usuario.getNome() + "' registrado com sucesso.");
 
                 livro.status = "emprestado";
+            
+            }
 
+            else {
+
+                System.out.println("Livro indisponível.");
+
+            }
+        
         }
 
         else {
 
-            System.out.println("Livro indisponível.");
-
+            System.out.println("Erro! livro não registrado.");
+   
         }
-            
+
     }
-    
+
     public void EncerrarEmprestimo (Usuarios usuario, Livros livro) {
         
-        if (livro.getStatus().equalsIgnoreCase("emprestado")){
+       if (livro != null){
+           
+              if (livro.getStatus().equalsIgnoreCase("emprestado")){
             
             System.out.println("\nLivro devolvido!");
             
             livro.status = "disponivel";
             
-        }
-        
-        else {
-            
-            System.out.println("\nLivro não emprestado.");
-            
-        }
+            }
+
+            else {
+
+                System.out.println("\nLivro não emprestado.");
+
+            }
+              
+       }
+       
+       else {
+                     
+           System.out.println("Erro! livro não registrado.");
+
+       }
+     
     }
     
     @Override
