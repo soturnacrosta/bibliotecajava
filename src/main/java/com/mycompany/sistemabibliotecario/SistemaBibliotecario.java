@@ -30,11 +30,6 @@ public class SistemaBibliotecario {
             List <Livros> livros = new ArrayList<>();
             List <Bibliotecario> bibliotecarios = new ArrayList();
             SistemaBiblioteca biblioteca = new SistemaBiblioteca(); //criação das listas quando o usuario inicia o software
-            Bibliotecario bibliotecarioMestre = new Bibliotecario ("Mestre", "333", "888", biblioteca); //bibliotecario "mestre" pra possibilitar usuario inicial
-            Usuarios usuarioConstruct = new Usuarios ("Mateus", "999", "555"); //usuario para criação
-            bibliotecarioMestre.CadastrarUsuario(usuarioConstruct);
-            Livros livroConstruct = new Livros ("Coraline", "Terror", "Neil Gaiman", "Disponivel", "001");
-            bibliotecarioMestre.CadastrarLivro(livroConstruct); //livro na inicialização
    
         while (!escolha.equals("0")){
 
@@ -162,15 +157,10 @@ public class SistemaBibliotecario {
 
                         Bibliotecario bibliotecario = new Bibliotecario (nomeB, cpfB, matriculaB, biblioteca);
                         Usuarios usuarioBibliotecario = new Usuarios (nomeB, cpfB, matriculaB);
-                        Livros livro = new Livros ("Frankenstein", "Terror", "Mary Shelley", "disponivel" ,"001"); //livro do bibliotecario instanciado no menu
-                        Livros livro2 = new Livros ("Frankenstein", "Terror", "Mary Shelley", "disponivel" ,"002"); //mostrando dois resultados possiveis
-                        bibliotecario.CadastrarLivro(livro2);
-                        bibliotecario.CadastrarLivro(livro); 
-                        
-                        bibliotecario.CadastrarUsuario(usuarioBibliotecario);
+                        Livros livro; //instancia livro
                         
                         System.out.println("\nLogado com sucesso!");
-
+                        
                         System.out.println("\n##############BIBLIOTECA##############");
                         System.out.println("Selecione uma das opções:");   
                         System.out.println("1. Consultar acervo de livros.");
@@ -185,72 +175,94 @@ public class SistemaBibliotecario {
                             switch (escolha) { //consultar acervo
 
                                 case "1":
+                                    
+                                    do { //exige que CADA menu seja repetido
+                                        
+                                        System.out.println("\n##############BIBLIOTECA##############");
+                                        System.out.println("Selecione uma das opções:"); 
+                                        System.out.println("1. Busca por título.");
+                                        System.out.println("2. Busca por genero.");
+                                        System.out.println("3. Busca por autor.");
+                                        System.out.println("4. Busca por código de barras.");
+                                        System.out.println("\n0. Encerrar.");
+                                        System.out.println("##############XXXXXXXXXX##############");
+                                            escolha = teclado.nextLine();
 
-                                    System.out.println("\n##############BIBLIOTECA##############");
-                                    System.out.println("Selecione uma das opções:"); 
-                                    System.out.println("1. Busca por título.");
-                                    System.out.println("2. Busca por genero.");
-                                    System.out.println("3. Busca por autor.");
-                                    System.out.println("4. Busca por código de barras.");
-                                    System.out.println("\n0. Encerrar.");
-                                    System.out.println("##############XXXXXXXXXX##############");
-                                        escolha = teclado.nextLine();
-                                        
-                                        if (escolha.equals("1")) {
-                                            
-                                            System.out.print("Digite o nome do titulo: ");
-                                                String tituloBusca = teclado.nextLine();
-                                                
-                                            bibliotecario.BuscaLivroPorTitulo(tituloBusca);
-                                            
-                                            break;
-                                        }
-                                        
-                                        else if (escolha.equals("2")) {
-                                            
-                                            System.out.print("Digite o genero: ");
-                                                String generoBusca = teclado.nextLine();
-                                                
-                                            bibliotecario.BuscaLivroPorGenero(generoBusca);
-                                            
-                                            break;
-                                        }
-                                        
-                                        else if (escolha.equals("3")) {
-                                            
-                                            System.out.println("Digite o autor: ");
-                                                String autorBusca = teclado.nextLine();
-                                                
-                                            bibliotecario.BuscaLivroPorAutor(autorBusca);
-                                            
-                                            break;
-                                        }
-                                        
-                                        else if (escolha.equals("4")) {
-                                            
-                                            System.out.println("Digite o código de barras: ");
-                                                String codigoBusca = teclado.nextLine();
-                                                
-                                            bibliotecario.BuscaLivroPorCodigo(codigoBusca);
-                                            
-                                            break;
-                                        }
-                                        
-                                        else if (escolha.equals("0")) {
-                                            
-                                            System.out.println("Encerrando...");
-                                            
-                                            break;
-                                            
-                                        }
-                                        
-                                        else {
-                                            
-                                            System.out.println("Opção inválida! Encerrando...");
-                                            
-                                            break;
+                                            if (escolha.equals("1")) {
 
-                                        }
+                                                System.out.print("Digite o nome do titulo: ");
+                                                    String tituloBusca = teclado.nextLine();
+
+                                                bibliotecario.BuscaLivroPorTitulo(tituloBusca);
+
+                                                System.out.println("Deseja continuar? '1' para sim e '2' para não: ");
+                                                    String validar = teclado.nextLine();
+
+                                                    if (validar.equals("1")) {
+
+
+                                                    }
+
+                                                    else if (validar.equals("2")){
+
+                                                        System.out.println("Encerrando...");
+
+                                                        break;
+
+                                                    }
+
+                                                    else {
+
+                                                        System.out.println("Opção inválida, tente novamente.");
+
+                                                    }
+
+                                            }
+
+                                            else if (escolha.equals("2")) {
+
+                                                System.out.print("Digite o genero: ");
+                                                    String generoBusca = teclado.nextLine();
+
+                                                bibliotecario.BuscaLivroPorGenero(generoBusca);
+
+                                            }
+
+                                            else if (escolha.equals("3")) {
+
+                                                System.out.println("Digite o autor: ");
+                                                    String autorBusca = teclado.nextLine();
+
+                                                bibliotecario.BuscaLivroPorAutor(autorBusca);
+
+                                            }
+
+                                            else if (escolha.equals("4")) {
+
+                                                System.out.println("Digite o código de barras: ");
+                                                    String codigoBusca = teclado.nextLine();
+
+                                                bibliotecario.BuscaLivroPorCodigo(codigoBusca);
+
+                                            }
+
+                                            else if (escolha.equals("0")) {
+
+                                                System.out.println("Encerrando...");
+
+                                                break;
+
+                                            }
+
+                                            else {
+
+                                                System.out.println("Opção inválida!");
+
+                                            }
+
+                                    } while (!escolha.equals("0"));
+                                    
+                                    break;
                                     
                                 case "2": //consultar usuários
                                     
@@ -270,8 +282,6 @@ public class SistemaBibliotecario {
                                                 
                                             bibliotecario.BuscarUsuarioPorNome(nomeBusca);
                                             
-                                            break;
-                                            
                                         }
                                         
                                         else if (escolha.equals("2")) { //por cpf
@@ -281,8 +291,6 @@ public class SistemaBibliotecario {
                                                 
                                             bibliotecario.BuscarUsuarioPorCpf(cpfBusca);
                                             
-                                            break;
-                                            
                                         }
                                         
                                         else if (escolha.equals("3")) { //por matricula 
@@ -291,8 +299,6 @@ public class SistemaBibliotecario {
                                                 String matriculaBusca = teclado.nextLine();
                                                 
                                             bibliotecario.BuscarUsuarioPorMatricula(matriculaBusca);
-                                            
-                                            break;
                                             
                                         }
                                         
@@ -305,9 +311,7 @@ public class SistemaBibliotecario {
                                         
                                         else {
                                             
-                                            System.out.println("Opção inválida! Encerrando...");
-                                            
-                                            break;
+                                            System.out.println("Opção inválida!");
                                             
                                         }
                                 
@@ -336,8 +340,6 @@ public class SistemaBibliotecario {
                                                 livro = new Livros (titulo, genero, autor, "disponivel", codigo);
                                                 bibliotecario.CadastrarLivro(livro); //livro adicionado 
                                                 
-                                            break;
-                                            
                                         }
                                         
                                         else if (escolha.equals("2")) { //atualiza. utilize 123 no codigo para rodar...
@@ -363,18 +365,14 @@ public class SistemaBibliotecario {
                                             System.out.println("Título: " +  livro.getTitulo() + "\nGenero: " + livro.getGenero() + "\nAutor: " + livro.getAutor() + "\nCódigo de barras: "
                                             + livro.getCodigo());
                                             
-                                            break;
-                                            
                                         }
                                         
                                         else if (escolha.equals("3")) { //remover titulo
                                             
                                             System.out.print("Digite o código de barras do título a remover: ");
                                                 String codigoBuscar = teclado.nextLine();
-                                                
-                                            bibliotecario.RemoverLivro(livro);
                                             
-                                            break;
+                                            bibliotecario.RemoverLivro(codigoBuscar);
                                             
                                         }
                                         
@@ -387,9 +385,8 @@ public class SistemaBibliotecario {
                                         
                                         else {
                                             
-                                            System.out.println("Opção inválida! Encerrando...");
+                                            System.out.println("Opção inválida!");
                                             
-                                            break;
 
                                         }
                                     
@@ -416,7 +413,6 @@ public class SistemaBibliotecario {
                                                     Usuarios usuario = new Usuarios (nome, cpf, matricula);
                                                     bibliotecario.CadastrarUsuario(usuario);
                                                     
-                                                    break;
                                             }
 
                                             else if (escolha.equals("2")) { //atualiza usuario
@@ -440,8 +436,6 @@ public class SistemaBibliotecario {
                                                 System.out.println("Novos dados:");
                                                 System.out.println("Nome: " + usuario.getNome() + "\nCPF :" + usuario.getCpf() + "\nMatricula: " + usuario.getMatricula());
                                                 
-                                                break;
-
                                             }
 
                                             else if (escolha.equals("3")) { //remove usuario 
@@ -451,7 +445,6 @@ public class SistemaBibliotecario {
 
                                                 bibliotecario.RemoverUsuario(matricula);
                                                 
-                                                break;
                                             }
                                             
                                             else if (escolha.equals("0")) { //encerra
@@ -466,7 +459,6 @@ public class SistemaBibliotecario {
                                                 
                                                 System.out.println("Opção inválida! Encerrando...");
                                                 
-                                                break;
 
                                             }
 
@@ -490,8 +482,6 @@ public class SistemaBibliotecario {
                                                 
                                               bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
                                               
-                                              break;
-                                              
                                         }
                                         
                                         else if (escolha.equals("2")) {
@@ -514,8 +504,6 @@ public class SistemaBibliotecario {
                                         else {
                                             
                                             System.out.println("Opção inválida!");
-                                            
-                                            break;
                                             
                                         }
                             }

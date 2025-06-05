@@ -31,11 +31,11 @@ public class Bibliotecario extends Usuarios {
 
     }
     
-    public void RemoverLivro (Livros livro) {
+    public void RemoverLivro (String codigo) {
         
         System.out.println("\n" + this.getNome() + " está removendo um livro.");
         
-            this.sistemaBiblioteca.RemoverLivro(livro);
+            this.sistemaBiblioteca.RemoverLivro(codigo);
         
     }
     

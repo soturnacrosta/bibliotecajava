@@ -31,11 +31,23 @@ public class SistemaBiblioteca {
         
     }
     
-    public void RemoverLivro (Livros livro) {
+    public void RemoverLivro (String codigo) {
         
-        this.acervo.remove(livro);
         
-        System.out.println("Livro '" + livro.getTitulo() + "' removido do acervo.\n");
+        Livros livroRemover = BuscarLivroPorCodigo(codigo); //procura o livro através de código de barras ao invéde objeto livros. assim não precisa instanciar nenhum livro pro metodo iniciar 
+        
+        if (livroRemover != null) {
+            
+            this.acervo.remove(livroRemover);
+            
+            System.out.println("Livro '" + livroRemover.getTitulo() + "' removido do acervo.\n");
+
+        }
+        
+        else {
+            
+            System.out.println("Erro! Não há livros registrados.");
+        }
         
     }
     
@@ -54,8 +66,10 @@ public class SistemaBiblioteca {
 
                 }
           }
-          
-          return resultados; // Livro não encontrado
+            
+            System.out.println("Não há livro encontrado com esses critérios.");
+
+            return resultados; // Livro não encontrado
           
       }
     
@@ -71,8 +85,10 @@ public class SistemaBiblioteca {
 
                 }
           }
-          
-          return null; // Livro não encontrado
+               
+            System.out.println("Não há livro encontrado com esses critérios.");
+
+            return null; // Livro não encontrado
           
     }
      
@@ -91,6 +107,8 @@ public class SistemaBiblioteca {
                     }
                 }
 
+            System.out.println("Não há livro encontrado com esses critérios.");
+
             return null; // Livro não encontrado
 
           }
@@ -108,6 +126,8 @@ public class SistemaBiblioteca {
                     resultados.add(l);
                 }
         }
+        
+        System.out.println("Não há livro encontrado com esses critérios.");
           
         return null; // Livro não encontrado
     }
