@@ -63,21 +63,25 @@ public class SistemaBiblioteca {
                     System.out.println("\nTitulo encontrado: " + l);
 
                     resultados.add(l); //retorna todos os resultados adicionando o list
-
+                    
                 }
           }
             
-            System.out.println("Não há livro encontrado com esses critérios.");
-
-            return resultados; // Livro não encontrado
+            if (resultados.isEmpty()) { //precisa de  um if para controlar o retorno
+                 
+                System.out.println("Não há livro encontrado com esses critérios.");
+                // Livro não encontrado
+            }
           
+            return resultados; 
+            
       }
     
     public Livros BuscarLivroPorCodigo (String codigo) { //precisa ser retorno UNICO para poder atualizar o dado. Não pode ser lista.
         
         for (Livros l : acervo) {
 
-                if (l.getCodigo().equalsIgnoreCase(codigo)) {
+                if (l.getCodigo().equals(codigo)) { //o codigo deve ser EXATO!!! NADA DE IGNORE CASE!
 
                     System.out.println("\nTitulo encontrado: " + l);
 
@@ -92,7 +96,7 @@ public class SistemaBiblioteca {
           
     }
      
-    public Livros BuscarLivroPorGenero(String genero) {
+    public List<Livros> BuscarLivroPorGenero(String genero) {
         
         List<Livros> resultados = new ArrayList<>(); //criar array de todos os resultados da busca
 
@@ -107,13 +111,17 @@ public class SistemaBiblioteca {
                     }
                 }
 
-            System.out.println("Não há livro encontrado com esses critérios.");
-
-            return null; // Livro não encontrado
-
+            if (resultados.isEmpty()) { //precisa de  um if para controlar o retorno
+                
+                System.out.println("Não há livro encontrado com esses critérios.");
+                // Livro não encontrado
+            }
+          
+            return resultados; 
+            
           }
     
-    public Livros BuscarLivroPorAutor (String autor) {
+    public List<Livros> BuscarLivroPorAutor (String autor) {
          
         List<Livros> resultados = new ArrayList<>();
 
@@ -127,9 +135,14 @@ public class SistemaBiblioteca {
                 }
         }
         
-        System.out.println("Não há livro encontrado com esses critérios.");
+        if  (resultados.isEmpty()) { //precisa de  um if para controlar o retorno
+                
+                System.out.println("Não há livro encontrado com esses critérios.");
+                // Livro não encontrado
+            }
           
-        return null; // Livro não encontrado
+            return resultados; 
+            
     }
     
     //#######################CONSULTA COMPLETA################################3

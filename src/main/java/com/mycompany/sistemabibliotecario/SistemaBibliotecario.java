@@ -16,7 +16,14 @@ public class SistemaBibliotecario {
 
         Scanner teclado = new Scanner (System.in);
         String escolha;
-        
+
+        List <Usuarios> usuarios = new ArrayList<>();
+        List <Livros> livros = new ArrayList<>();
+        List <Bibliotecario> bibliotecarios = new ArrayList();
+        SistemaBiblioteca biblioteca = new SistemaBiblioteca(); //criação das listas quando o usuario inicia o software
+        Usuarios usuario1 = new Usuarios ("teste", "123", "123");
+        biblioteca.CadastrarUsuario(usuario1);
+
         do {
             
             System.out.println("##############BIBLIOTECA##############"); //interface inicial, menu inicial
@@ -27,13 +34,6 @@ public class SistemaBibliotecario {
             System.out.println("\n0. Encerrar.");
             System.out.println("##############XXXXXXXXXX##############");
                 escolha = teclado.nextLine();
-
-                List <Usuarios> usuarios = new ArrayList<>();
-                List <Livros> livros = new ArrayList<>();
-                List <Bibliotecario> bibliotecarios = new ArrayList();
-                SistemaBiblioteca biblioteca = new SistemaBiblioteca(); //criação das listas quando o usuario inicia o software
-                Usuarios usuario1 = new Usuarios ("teste", "123", "123");
-                biblioteca.CadastrarUsuario(usuario1);
 
                 switch (escolha) {
 
