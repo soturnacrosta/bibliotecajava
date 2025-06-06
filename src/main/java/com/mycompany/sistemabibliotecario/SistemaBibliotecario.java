@@ -327,9 +327,20 @@ public class SistemaBibliotecario {
                                                             String autor = teclado.nextLine();
                                                         System.out.println("Digite o codigo de barras: ");
                                                             String codigo = teclado.nextLine();
-
-                                                            livro = new Livros (titulo, genero, autor, "disponivel", codigo);
-                                                            bibliotecario.CadastrarLivro(livro); //livro adicionado 
+                                                            
+                                                            Livros livroExistente = biblioteca.BuscarLivroPorCodigo(codigo); //atribui a uma variável a busca
+                                                            
+                                                            if (livroExistente == null){
+                                                                
+                                                                livro = new Livros (titulo, genero, autor, "disponivel", codigo);
+                                                                bibliotecario.CadastrarLivro(livro); //livro adicionado 
+                                                                
+                                                            }
+                                                            
+                                                            else {
+                                                                
+                                                                System.out.println("Erro! Código de barras já cadastrado");
+                                                            }
 
                                                     }
 
