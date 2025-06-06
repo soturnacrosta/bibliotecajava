@@ -12,9 +12,9 @@ public class Bibliotecario extends Usuarios {
     
     private SistemaBiblioteca sistemaBiblioteca;
 
-    public Bibliotecario(String nome, String cpf, String matricula, SistemaBiblioteca sistemaBiblioteca ) {
+    public Bibliotecario(String nome, String cpf, SistemaBiblioteca sistemaBiblioteca ) {
         
-        super(nome, cpf, matricula);
+        super(nome, cpf);
         
             this.sistemaBiblioteca = sistemaBiblioteca; //isso que associa que o bibliotecario vai gerenciar
    
@@ -87,7 +87,7 @@ public class Bibliotecario extends Usuarios {
             
     }
      
-    public void ModificarUsuarios (String matricula, String novoNome, String novoCpf, String novaMatricula) {
+    public void ModificarUsuarios (int matricula, String novoNome, String novoCpf, int novaMatricula) {
         
         System.out.println(this.getNome() + " está modificando um usário.");
         
@@ -107,19 +107,13 @@ public class Bibliotecario extends Usuarios {
         
         System.out.println(this.getNome() + " está cadastrando um usuário.");
         
-        if (sistemaBiblioteca.BuscarUsuarioPorMatricula(usuario.getMatricula()) == null){
+            this.sistemaBiblioteca.CadastraUsuario(usuario);
             
-            this.sistemaBiblioteca.CadastrarUsuario(usuario);
-
-        }
+        System.out.println("Erro! Usuário com essa matrícula já cadastrado! Tente novamente com outra matrícula.");
         
-        else {
-            
-            System.out.println("Erro! Usuário com essa matrícula já cadastrado! Tente novamente com outra matrícula.");
-        }
     }
     
-    public void RemoverUsuario (String matricula) {
+    public void RemoverUsuario (int matricula) {
         
         Usuarios usuarioRemover = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
         
@@ -154,7 +148,7 @@ public class Bibliotecario extends Usuarios {
             
     }
     
-    public void BuscarUsuarioPorMatricula (String matricula) {
+    public void BuscarUsuarioPorMatricula (int matricula) {
         
         System.out.println("Consultando usuário por matricula...");
 
@@ -170,7 +164,7 @@ public class Bibliotecario extends Usuarios {
             
     }
     
-    public void RegistrarEmprestimo (String matricula, String codigo) {
+    public void RegistrarEmprestimo (int matricula, String codigo) {
         
         Usuarios usuarioEmprestimo = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
 
@@ -182,7 +176,7 @@ public class Bibliotecario extends Usuarios {
             
     }
     
-    public void EncerrarEmprestimo (String matricula, String codigo) {
+    public void EncerrarEmprestimo (int matricula, String codigo) {
         
         Usuarios usuarioEmprestimo = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
 

@@ -21,8 +21,8 @@ public class SistemaBibliotecario {
         List <Livros> livros = new ArrayList<>();
         List <Bibliotecario> bibliotecarios = new ArrayList();
         SistemaBiblioteca biblioteca = new SistemaBiblioteca(); //criação das listas quando o usuario inicia o software
-        Usuarios usuario1 = new Usuarios ("teste", "123", "123");
-        biblioteca.CadastrarUsuario(usuario1);
+        //Usuarios usuario1 = new Usuarios ("teste", "123");
+        //biblioteca.CadastraUsuario(usuario1);
 
         do {
             
@@ -41,7 +41,8 @@ public class SistemaBibliotecario {
 
                             System.out.println("Bem-vindo!");   
                             System.out.print("Digite sua matrícula: ");
-                                String matriculaMatch = teclado.nextLine();
+                                int matriculaMatch = teclado.nextInt();
+                                teclado.nextLine();
 
                                 Usuarios usuarioLogado = biblioteca.BuscarUsuarioPorMatricula(matriculaMatch); //crie uma instancia do tipo usuario ja buscando a matricula
                                 
@@ -155,11 +156,13 @@ public class SistemaBibliotecario {
                             System.out.print("Entre com seu CPF: ");
                                 String cpfB = teclado.nextLine();
                             System.out.print("Entre com sua matrícula: ");
-                                String matriculaB = teclado.nextLine();
+                                int matriculaB = teclado.nextInt();
+                                teclado.nextLine();
                             
-                            Bibliotecario bibliotecario = new Bibliotecario (nomeB, cpfB, matriculaB, biblioteca);
-                            Usuarios usuarioBibliotecario = new Usuarios (nomeB, cpfB, matriculaB);
+                            Bibliotecario bibliotecario = new Bibliotecario (nomeB, cpfB, biblioteca);
+                            Usuarios usuarioBibliotecario = new Usuarios (nomeB, cpfB);
                             Livros livro; //instancia livro
+                            usuarioBibliotecario.getMatricula();
 
                             System.out.println("\nLogado com sucesso!");
                             
@@ -283,10 +286,12 @@ public class SistemaBibliotecario {
                                                     else if (escolhaBuscaUsuario.equals("3")) { //por matricula 
 
                                                         System.out.print("Digite a matricula do usuário para buscar: ");
-                                                            String matriculaBusca = teclado.nextLine();
+                                                            int matriculaBusca = teclado.nextInt();
+                                                            teclado.nextLine();
 
                                                         bibliotecario.BuscarUsuarioPorMatricula(matriculaBusca);
 
+                                                        biblioteca.listarUsuarios();
                                                     }
 
                                                     else if (escolhaBuscaUsuario.equals("0")) {
@@ -412,10 +417,8 @@ public class SistemaBibliotecario {
                                                                 String nome = teclado.nextLine();
                                                             System.out.print("Digite o CPF: ");
                                                                 String cpf = teclado.nextLine();
-                                                            System.out.print("Digite a matricula: ");
-                                                                String matricula = teclado.nextLine();
-
-                                                                Usuarios usuario = new Usuarios (nome, cpf, matricula);
+                                                        
+                                                                Usuarios usuario = new Usuarios (nome, cpf);
                                                                 bibliotecario.CadastrarUsuario(usuario);
 
                                                         }
@@ -423,7 +426,8 @@ public class SistemaBibliotecario {
                                                         else if (escolhaGerenciarUsuarios.equals("2")) { //atualiza usuario
 
                                                             System.out.print("Digite a matricula do usuário para atualizar: ");
-                                                                String matriculaBuscar = teclado.nextLine();
+                                                                int matriculaBuscar = teclado.nextInt();
+                                                                teclado.nextLine();
 
                                                                 Usuarios usuario = biblioteca.BuscarUsuarioPorMatricula(matriculaBuscar); //buscando
 
@@ -434,7 +438,8 @@ public class SistemaBibliotecario {
                                                             System.out.print("Digite o CPF atual: ");
                                                                 String cpfNovo = teclado.nextLine();
                                                             System.out.print("Digite a matricula atual: ");
-                                                                String matriculaNovo = teclado.nextLine();
+                                                                int matriculaNovo = teclado.nextInt();
+                                                                teclado.nextLine();
 
                                                                 bibliotecario.ModificarUsuarios(matriculaBuscar, nomeNovo, cpfNovo, matriculaNovo);
 
@@ -446,7 +451,8 @@ public class SistemaBibliotecario {
                                                         else if (escolhaGerenciarUsuarios.equals("3")) { //remove usuario 
 
                                                             System.out.print("Digite a matricula do usuário a remover: ");
-                                                                String matricula = teclado.nextLine();
+                                                                int matricula = teclado.nextInt();
+                                                                teclado.nextLine();
 
                                                             bibliotecario.RemoverUsuario(matricula);
 
@@ -487,7 +493,8 @@ public class SistemaBibliotecario {
                                                             String codigoEmprestimo = teclado.nextLine();
 
                                                         System.out.print("Digite a matricula do usuário: ");
-                                                            String matriculaEmprestimo = teclado.nextLine();
+                                                            int matriculaEmprestimo = teclado.nextInt();
+                                                            teclado.nextLine();
 
                                                           bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
 
@@ -499,7 +506,8 @@ public class SistemaBibliotecario {
                                                             String codigoEmprestimo = teclado.nextLine();
 
                                                         System.out.print("Digite a matricula do usuário: ");
-                                                            String matriculaEmprestimo = teclado.nextLine();
+                                                            int matriculaEmprestimo = teclado.nextInt();
+                                                            teclado.nextLine();
 
                                                         bibliotecario.EncerrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
 

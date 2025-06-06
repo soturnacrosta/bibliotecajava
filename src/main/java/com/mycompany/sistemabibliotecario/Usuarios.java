@@ -13,13 +13,16 @@ import java.util.List;
  */
 public class Usuarios {
 
-    protected String nome, cpf, matricula;
+    protected String nome, cpf;
+    protected static int proxMatricula = 0000; //variavel de matricula e contador são variaveis DIFERENTES!
+    protected int matricula;
     protected List<Livros> livros = new ArrayList<>(); //deixe que as listas sejam tratadas na propria classe
 
-    public Usuarios(String nome, String cpf, String matricula) {
+    public Usuarios(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        this.matricula = matricula;
+        this.matricula = proxMatricula;
+            proxMatricula++;
         this.livros = new ArrayList<>(); //inicializa a lista toda vez
     }
 
@@ -39,11 +42,11 @@ public class Usuarios {
         this.cpf = cpf;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
     

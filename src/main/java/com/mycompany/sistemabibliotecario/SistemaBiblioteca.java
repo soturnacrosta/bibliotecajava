@@ -4,7 +4,6 @@
  */
 package com.mycompany.sistemabibliotecario;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,7 +154,7 @@ public class SistemaBiblioteca {
     }
  
     // Gerenciamento de Usuários
-    public void CadastrarUsuario(Usuarios usuario) {
+    public void CadastraUsuario(Usuarios usuario) {
         
         this.usuariosCadastrados.add(usuario);
         
@@ -163,6 +162,18 @@ public class SistemaBiblioteca {
         
     }
     
+       // Adicione (ou confirme a existência e o uso) deste método
+    public void listarUsuarios() {
+        if (usuariosCadastrados.isEmpty()) {
+            System.out.println("Nenhum usuário cadastrado ainda.");
+            return;
+        }
+        System.out.println("\n--- Lista de Usuários ---");
+        for (Usuarios u : usuariosCadastrados) {
+            System.out.println(u); // Assegure-se de que o toString() de Usuarios funciona bem
+        }
+        System.out.println("------------------------");
+    }
     public void RemoverUsuario (Usuarios usuario) {
         
         this.usuariosCadastrados.remove(usuario);
@@ -171,11 +182,11 @@ public class SistemaBiblioteca {
 
     }
 
-    public Usuarios BuscarUsuarioPorMatricula(String matricula) {
+    public Usuarios BuscarUsuarioPorMatricula(int matricula) {
         
         for (Usuarios u : usuariosCadastrados) {
             
-            if (u.getMatricula().equalsIgnoreCase(matricula)) {
+            if (u.getMatricula() == matricula) {
                 
                 System.out.println("\nUsuário encontrado.\nNome: " + u.getNome() + "\nMatrícula: " + u.getMatricula() + "\nCpf:" + u.getCpf() + "\n");
                 return u; // <--- Retorna o usuário IMEDIATAMENTE quando encontra
@@ -260,7 +271,7 @@ public class SistemaBiblioteca {
         
     }
     
-    public  boolean AtualizarUsuario (String matricula, String novoNome, String novoCpf, String novaMatricula){
+    public  boolean AtualizarUsuario (int matricula, String novoNome, String novoCpf, int novaMatricula){
         
         Usuarios usuarioAtualizar = BuscarUsuarioPorMatricula(matricula);
         
