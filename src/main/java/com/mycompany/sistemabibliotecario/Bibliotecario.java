@@ -107,16 +107,35 @@ public class Bibliotecario extends Usuarios {
         
         System.out.println(this.getNome() + " está cadastrando um usuário.");
         
+        if (sistemaBiblioteca.BuscarUsuarioPorMatricula(usuario.getMatricula()) == null){
+            
             this.sistemaBiblioteca.CadastrarUsuario(usuario);
+
+        }
         
+        else {
+            
+            System.out.println("Erro! Usuário com essa matrícula já cadastrado! Tente novamente com outra matrícula.");
+        }
     }
     
     public void RemoverUsuario (String matricula) {
         
-        Usuarios usuario = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
+        Usuarios usuarioRemover = sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
         
-        System.out.println(this.getNome() + " está removendo um usuário.");
+        if (usuarioRemover != null) {
             
+             this.sistemaBiblioteca.RemoverUsuario(usuarioRemover);
+        
+            System.out.println(this.getNome() + " está removendo um usuário.");
+            
+        }
+       
+        else {
+            
+            
+        }
+        
     }
     
     public void BuscarUsuarioPorNome (String nome) {
