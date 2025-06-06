@@ -4,6 +4,7 @@
 
 package com.mycompany.sistemabibliotecario;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 /**
@@ -41,14 +42,35 @@ public class SistemaBibliotecario {
 
                             System.out.println("Bem-vindo!");   
                             System.out.print("Digite sua matrícula: ");
-                                int matriculaMatch = teclado.nextInt();
-                                teclado.nextLine();
-
-                                Usuarios usuarioLogado = biblioteca.BuscarUsuarioPorMatricula(matriculaMatch); //crie uma instancia do tipo usuario ja buscando a matricula
+                            boolean matriculaValida = false;
+                            Usuarios usuarioLogado = null;
+                            
+                            do {
                                 
+                                try {
+
+                                    int matriculaMatch = teclado.nextInt();
+                                    teclado.nextLine();
+
+                                    usuarioLogado = biblioteca.BuscarUsuarioPorMatricula(matriculaMatch); //crie uma instancia do tipo usuario ja buscando a matricula
+                                    matriculaValida = true;
+                                }
+
+                                catch (InputMismatchException e) { //exceção para caso haja entrada de dados inválida
+
+                                    System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula:");
+                                    
+                                    teclado.nextLine();  //aqui ele já utiliza a entrada de dados que você requisitou previamente, nêo precisa pedir de novo
+                                    
+                                }
+                            
+                            }
+                            
+                            while (!matriculaValida);
+                            
                                 String escolhaUsuarioLoop = "1";
                                 
-                                if (usuarioLogado != null){ //o primeiro login é com a matricula 555
+                                if (usuarioLogado != null){ 
 
                                     System.out.println("Usuário logado!\n");
 
@@ -156,17 +178,36 @@ public class SistemaBibliotecario {
                             System.out.print("Entre com seu CPF: ");
                                 String cpfB = teclado.nextLine();
                             System.out.print("Entre com sua matrícula: ");
-                                int matriculaB = teclado.nextInt();
-                                teclado.nextLine();
-                            
-                            Bibliotecario bibliotecario = new Bibliotecario (nomeB, cpfB, biblioteca);
-                            Usuarios usuarioBibliotecario = new Usuarios (nomeB, cpfB);
-                            Livros livro; //instancia livro
-                            usuarioBibliotecario.getMatricula();
 
-                            System.out.println("\nLogado com sucesso!");
+                            boolean logado = false;
                             
-                            boolean logado = true;
+                            do {
+                                
+                                    try {
+                                        
+                                        int matriculaB = teclado.nextInt();
+                                        teclado.nextLine();
+                                        
+                                        System.out.println("\nLogado com sucesso!");
+                                        
+                                        logado = true;
+
+                                    }
+                                    
+                                    catch (InputMismatchException e) {
+                                        
+                                        System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                            teclado.nextLine();  //aqui ele já utiliza a entrada de dados que você requisitou previamente, nêo precisa pedir de novo
+                                        
+                                    }
+                                    
+                            }
+                            
+                            while (!logado);
+                                
+                            Bibliotecario bibliotecario = new Bibliotecario (nomeB, cpfB, biblioteca);
+                            Usuarios usuarioBibliotecario = new Usuarios (nomeB, cpfB); //ele cria usuario bibliotecario com uma matricula 1
+                            Livros livro; //instancia livro
                             
                             do { //PARA NÃO SAIR DO MENU E CAIR NO PROXIMO BLOCO, FAÇA O WHILE DELEÉ
 
@@ -286,12 +327,31 @@ public class SistemaBibliotecario {
                                                     else if (escolhaBuscaUsuario.equals("3")) { //por matricula 
 
                                                         System.out.print("Digite a matricula do usuário para buscar: ");
-                                                            int matriculaBusca = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                        boolean validarLoopUsuario = false;
+                                                        
+                                                        do {
+                                                            
+                                                            try {
+                                                                int matriculaBusca = teclado.nextInt();
+                                                                teclado.nextLine();
 
-                                                        bibliotecario.BuscarUsuarioPorMatricula(matriculaBusca);
+                                                                bibliotecario.BuscarUsuarioPorMatricula(matriculaBusca);
 
-                                                        biblioteca.listarUsuarios();
+                                                                validarLoopUsuario = true;
+                                                                
+                                                            }
+                                                            
+                                                            catch (InputMismatchException e) {
+                                                                
+                                                                System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                                                teclado.nextLine();  //aqui ele já utiliza a entrada de dados que você requisitou previamente, nêo precisa pedir de novo
+                                                                
+                                                            }
+                                                            
+                                                        }
+                                                        
+                                                        while (!validarLoopUsuario);
+                                                        
                                                     }
 
                                                     else if (escolhaBuscaUsuario.equals("0")) {
@@ -426,36 +486,86 @@ public class SistemaBibliotecario {
                                                         else if (escolhaGerenciarUsuarios.equals("2")) { //atualiza usuario
 
                                                             System.out.print("Digite a matricula do usuário para atualizar: ");
-                                                                int matriculaBuscar = teclado.nextInt();
-                                                                teclado.nextLine();
+                                                             
+                                                            boolean atualizaLoop = false;
+                                                            
+                                                            do {
+                                                                
+                                                                try {
+                                                                    
+                                                                    int matriculaBuscar = teclado.nextInt();
+                                                                    teclado.nextLine();
 
-                                                                Usuarios usuario = biblioteca.BuscarUsuarioPorMatricula(matriculaBuscar); //buscando
+                                                                    Usuarios usuario = biblioteca.BuscarUsuarioPorMatricula(matriculaBuscar); //buscando
+                                                                    
+                                                                    atualizaLoop = true;
+                                                                    
+                                                                    
+                                                                    if (usuario != null) {
+                                                                        
+                                                                        System.out.println("Usuario " + usuario.getNome() + " selecionado, a atualizar...\n");
 
-                                                            System.out.println("Usuario " + usuario.getNome() + " selecionado, a atualizar...\n");
+                                                                        System.out.print("Digite o nome atual: ");
+                                                                            String nomeNovo = teclado.nextLine();
+                                                                        System.out.print("Digite o CPF atual: ");
+                                                                            String cpfNovo = teclado.nextLine();
 
-                                                            System.out.print("Digite o nome atual: ");
-                                                                String nomeNovo = teclado.nextLine();
-                                                            System.out.print("Digite o CPF atual: ");
-                                                                String cpfNovo = teclado.nextLine();
-                                                            System.out.print("Digite a matricula atual: ");
-                                                                int matriculaNovo = teclado.nextInt();
-                                                                teclado.nextLine();
+                                                                            bibliotecario.ModificarUsuarios(matriculaBuscar, nomeNovo, cpfNovo);
 
-                                                                bibliotecario.ModificarUsuarios(matriculaBuscar, nomeNovo, cpfNovo, matriculaNovo);
+                                                                        System.out.println("\nNovos dados:");
+                                                                        System.out.println("Nome: " + usuario.getNome() + "\nCPF :" + usuario.getCpf() + "\nMatricula: " + usuario.getMatricula());
 
-                                                            System.out.println("Novos dados:");
-                                                            System.out.println("Nome: " + usuario.getNome() + "\nCPF :" + usuario.getCpf() + "\nMatricula: " + usuario.getMatricula());
-
+                                                                    }
+                                                                    
+                                                                    else {
+                                                                        
+                                                                    }
+                                                                }
+                                                                
+                                                                catch (InputMismatchException e) {
+                                                                     
+                                                                    System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                                                    teclado.nextLine();  
+                                                                    
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            while (!atualizaLoop);
+                                                                
                                                         }
 
                                                         else if (escolhaGerenciarUsuarios.equals("3")) { //remove usuario 
-
+                                                            
                                                             System.out.print("Digite a matricula do usuário a remover: ");
-                                                                int matricula = teclado.nextInt();
-                                                                teclado.nextLine();
+                                                            
+                                                            boolean removerLoop = false;
+                                                            
+                                                            do {
+                                                                
+                                                                try {
+                                                                    
+                                                                    int matricula = teclado.nextInt();
+                                                                        teclado.nextLine();
 
-                                                            bibliotecario.RemoverUsuario(matricula);
-
+                                                                    bibliotecario.RemoverUsuario(matricula);
+                                                                    
+                                                                    removerLoop = true;
+                                                                    
+                                                                }
+                                                                
+                                                                catch (InputMismatchException e) {
+                                                                    
+                                                                     
+                                                                    System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                                                    teclado.nextLine();  
+                                                                    
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            while (!removerLoop);
+                                                            
                                                         }
 
                                                         else if (escolhaGerenciarUsuarios.equals("0")) { //encerra
@@ -488,16 +598,38 @@ public class SistemaBibliotecario {
                                                     String escolhaEmprestimo = teclado.nextLine();
 
                                                     if (escolhaEmprestimo.equals("1")) { //registro de emprestimo
-
+                                                        
                                                         System.out.print("Digite o código de barras: ");
-                                                            String codigoEmprestimo = teclado.nextLine();
+                                                           String codigoEmprestimo = teclado.nextLine();
 
                                                         System.out.print("Digite a matricula do usuário: ");
-                                                            int matriculaEmprestimo = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                        
+                                                        boolean loopEmprestimo = false;
+                                                        
+                                                        do {
+                                                            
+                                                            try {
+                                                                
+                                                                   int matriculaEmprestimo = teclado.nextInt();
+                                                                   teclado.nextLine();
 
-                                                          bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
-
+                                                                   bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
+                                                                   
+                                                                   loopEmprestimo = true;
+                                                                  
+                                                            }
+                                                            
+                                                            catch (InputMismatchException e) {
+                                                                
+                                                                System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                                                teclado.nextLine();                                   
+                                                                
+                                                            }
+                                                            
+                                                        }
+                                                        
+                                                        while (!loopEmprestimo);
+                                                       
                                                     }
 
                                                     else if (escolhaEmprestimo.equals("2")) {
@@ -506,11 +638,32 @@ public class SistemaBibliotecario {
                                                             String codigoEmprestimo = teclado.nextLine();
 
                                                         System.out.print("Digite a matricula do usuário: ");
-                                                            int matriculaEmprestimo = teclado.nextInt();
-                                                            teclado.nextLine();
+                                                        boolean loopDevolver = false;
+                                                        
+                                                        do {
+                                                            
+                                                            try {
+                                                                
+                                                                int matriculaEmprestimo = teclado.nextInt();
+                                                                    teclado.nextLine();
 
-                                                        bibliotecario.EncerrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
-
+                                                                bibliotecario.EncerrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
+                                                                
+                                                                loopDevolver = true;
+                                                                
+                                                            }
+                                                            
+                                                            catch (InputMismatchException e) {
+                                                                
+                                                                System.out.print("Erro! Por favor, digite apenas números para a matrícula.\nDigite sua matrícula: ");
+                                                                teclado.nextLine();  
+                                                                
+                                                            }
+                                                            
+                                                        }
+                                                        
+                                                        while (!loopDevolver);
+                                                        
                                                     }
 
                                                     else if (escolhaEmprestimo.equals("0")) {

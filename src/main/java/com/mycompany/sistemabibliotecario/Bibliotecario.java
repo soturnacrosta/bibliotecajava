@@ -87,11 +87,11 @@ public class Bibliotecario extends Usuarios {
             
     }
      
-    public void ModificarUsuarios (int matricula, String novoNome, String novoCpf, int novaMatricula) {
+    public void ModificarUsuarios (int matricula, String novoNome, String novoCpf) {
         
         System.out.println(this.getNome() + " está modificando um usário.");
         
-            if (this.sistemaBiblioteca.AtualizarUsuario(matricula, novoNome, novoCpf, novaMatricula)) { //ele apenas chama o método
+            if (this.sistemaBiblioteca.AtualizarUsuario(matricula, novoNome, novoCpf)) { //ele apenas chama o método
             
         }
         
@@ -109,8 +109,6 @@ public class Bibliotecario extends Usuarios {
         
             this.sistemaBiblioteca.CadastraUsuario(usuario);
             
-        System.out.println("Erro! Usuário com essa matrícula já cadastrado! Tente novamente com outra matrícula.");
-        
     }
     
     public void RemoverUsuario (int matricula) {

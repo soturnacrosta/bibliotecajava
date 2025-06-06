@@ -271,7 +271,7 @@ public class SistemaBiblioteca {
         
     }
     
-    public  boolean AtualizarUsuario (int matricula, String novoNome, String novoCpf, int novaMatricula){
+    public  boolean AtualizarUsuario (int matricula, String novoNome, String novoCpf){
         
         Usuarios usuarioAtualizar = BuscarUsuarioPorMatricula(matricula);
         
@@ -279,9 +279,8 @@ public class SistemaBiblioteca {
             
             usuarioAtualizar.setNome(novoNome);
             usuarioAtualizar.setCpf(novoCpf);
-            usuarioAtualizar.setMatricula(novaMatricula);
             
-                System.out.println("\nUsuário " + matricula + " atualizado para:\nNome: " + novoNome + "\nCPF: " + novoCpf + "\nMatricula: " + novaMatricula);
+                System.out.println("\nUsuário " + matricula + " atualizado para:\nNome: " + novoNome + "\nCPF: " + novoCpf);
                 
             return true;
                 
