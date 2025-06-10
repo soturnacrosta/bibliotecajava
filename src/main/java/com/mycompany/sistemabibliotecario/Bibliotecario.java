@@ -57,7 +57,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscaLivroPorCodigo (String codigo) {
         
-        System.out.println("Consultando livro por codigo...");
+        System.out.println("\nConsultando livro por codigo...\n");
         
             this.sistemaBiblioteca.BuscarLivroPorCodigo(codigo);
 
@@ -65,7 +65,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscaLivroPorTitulo (String titulo) {
         
-        System.out.println("Consultando livro por titulo...");
+        System.out.println("\nConsultando livro por titulo...");
 
             this.sistemaBiblioteca.BuscarLivroPorTitulo(titulo);
             
@@ -73,7 +73,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscaLivroPorAutor (String autor) {
         
-        System.out.println("Consultando livro por autor...");
+        System.out.println("\nConsultando livro por autor...");
 
             this.sistemaBiblioteca.BuscarLivroPorAutor(autor);
             
@@ -81,7 +81,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscaLivroPorGenero (String genero) {
         
-        System.out.println("Consultando livro por genero...");
+        System.out.println("\nConsultando livro por genero...");
 
             this.sistemaBiblioteca.BuscarLivroPorGenero(genero);
             
@@ -105,7 +105,7 @@ public class Bibliotecario extends Usuarios {
     
     public void CadastrarUsuario (Usuarios usuario) {
         
-        System.out.println(this.getNome() + " está cadastrando um usuário.");
+        System.out.println("\n" + this.getNome() + " está cadastrando um usuário.");
         
             this.sistemaBiblioteca.CadastraUsuario(usuario);
             
@@ -132,7 +132,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscarUsuarioPorNome (String nome) {
         
-        System.out.println("Consultando usuário por nome...");
+        System.out.println("\nConsultando usuário por nome...");
         
             this.sistemaBiblioteca.BuscarUsuarioPorNome(nome);
             
@@ -140,7 +140,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscarUsuarioPorCpf (String cpf) {
         
-        System.out.println("Consultando usuário por CPF...");
+        System.out.println("\nConsultando usuário por CPF...");
 
             this.sistemaBiblioteca.BuscarUsuarioPorCpf(cpf);
             
@@ -148,7 +148,7 @@ public class Bibliotecario extends Usuarios {
     
     public void BuscarUsuarioPorMatricula (int matricula) {
         
-        System.out.println("Consultando usuário por matricula...");
+        System.out.println("\nConsultando usuário por matricula...");
 
             this.sistemaBiblioteca.BuscarUsuarioPorMatricula(matricula);
             

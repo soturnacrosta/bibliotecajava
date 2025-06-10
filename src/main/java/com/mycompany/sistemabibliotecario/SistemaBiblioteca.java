@@ -158,7 +158,7 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.add(usuario);
         
-        System.out.println("\nUsuário '" + usuario.getNome() + "' cadastrado.\n");
+        System.out.println("\nUsuário '" + usuario.getNome() + "' cadastrado com a matrícula: " + usuario.getMatricula()+ "\n");
         
     }
     
@@ -178,7 +178,7 @@ public class SistemaBiblioteca {
         
         this.usuariosCadastrados.remove(usuario);
         
-        System.out.println("\nUsuário '" + usuario.getNome() + "' excluído.\n");
+        System.out.println("Usuário '" + usuario.getNome() + "' excluído.\n");
 
     }
 
@@ -194,7 +194,7 @@ public class SistemaBiblioteca {
             
         }
         
-        System.out.println("\nUsuário não encontrado com esses critérios.\n");
+        System.out.println("Usuário não encontrado com esses critérios.");
         
         return null; // Retorna null se nenhum usuário for encontrado
         
@@ -236,7 +236,7 @@ public class SistemaBiblioteca {
 
         }
 
-        System.out.println("\nUsuário não encontrado com esses critérios.\n");
+        System.out.println("Usuário não encontrado com esses critérios.\n");
 
         return resultados; // Usuário não encontrado
     }
@@ -254,7 +254,7 @@ public class SistemaBiblioteca {
                 livroAtualizar.setGenero(novoGenero);
                 livroAtualizar.setStatus(novoStatus);
 
-                    System.out.println("\nLivro atualizado!\nTitulo antigo: \n" + codigo + "\nAtualizado para:\nNovo Título: " + novoTitulo + "\nNovo autor: " + novoAutor + "\nNovo Genero: " + novoGenero + "\nNovo Status: " + novoStatus);
+                    System.out.println("Livro atualizado!\n\nTitulo antigo: \n" + codigo + "\n\nAtualizado para:\nNovo Título: " + novoTitulo + "\nNovo autor: " + novoAutor + "\nNovo Genero: " + novoGenero + "\nNovo Status: " + novoStatus + "\n");
         
             return true;
             

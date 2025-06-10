@@ -613,6 +613,8 @@ public class SistemaBibliotecario {
                                                                    int matriculaEmprestimo = teclado.nextInt();
                                                                    teclado.nextLine();
 
+                                                                   System.out.println("");
+                                                                   
                                                                    bibliotecario.RegistrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
                                                                    
                                                                    loopEmprestimo = true;
@@ -647,6 +649,8 @@ public class SistemaBibliotecario {
                                                                 int matriculaEmprestimo = teclado.nextInt();
                                                                     teclado.nextLine();
 
+                                                                    System.out.println("");
+                                                                    
                                                                 bibliotecario.EncerrarEmprestimo(matriculaEmprestimo, codigoEmprestimo);
                                                                 
                                                                 loopDevolver = true;
